@@ -1,8 +1,8 @@
-main: aula1.c conjunto.c aula1.h
-	gcc -c aula1.c conjunto.c
-	gcc -o conjunto aula1.o conjunto.o
-	./conjunto
+main: main.c conjunto1.c cod1.h
+	gcc -c main.c conjunto1.c
+	gcc -o exemplo main.o conjunto1.o
+	./exemplo
 
 clean: 
-	rm aula1.o conjunto.o
+	rm edit main.o conjunto1.o
 

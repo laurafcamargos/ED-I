@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 25 23:23:46 2022
+# Make data base, printed on Wed Aug 31 08:45:39 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ VSCODE_CODE_CACHE_PATH = /home/boleira/.config/Code/CachedData/e4503b30fc78200f8
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.9LQER1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.RKBJR1
 # default
 .LOADED := 
 # default
@@ -91,7 +91,7 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3522
+VSCODE_PID = 12312
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -99,7 +99,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1952,unix/laurafcamargos:/tmp/.ICE-unix/1952
+SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1720,unix/laurafcamargos:/tmp/.ICE-unix/1720
 # automatic
 *F = $(notdir $*)
 # environment
@@ -145,7 +145,7 @@ SNAP_USER_COMMON = /home/boleira/snap/code/common
 # environment
 SNAP = /snap/code/105
 # environment
-INVOCATION_ID = 7e172ef208764eaba18eab4ab8f093b0
+INVOCATION_ID = 3198131b45ee421d8eed4987228719d2
 # environment
 SNAP_REVISION = 105
 # environment
@@ -179,7 +179,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := main
 # environment
-SYSTEMD_EXEC_PID = 1983
+SYSTEMD_EXEC_PID = 1743
 # environment
 DISPLAY = :0
 # environment
@@ -195,9 +195,9 @@ SNAP_DATA = /var/snap/code/105
 # environment
 SNAP_CONTEXT = IaWFdsO2TrgsjOiG2AkDnuc6R2rp2kTBLfnAebMusitSYM_s5pw1
 # environment
-MANAGERPID = 1798
+MANAGERPID = 1561
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3477
+GIO_LAUNCHED_DESKTOP_FILE_PID = 12269
 # environment
 _ = /snap/code/105/usr/share/code/code
 # environment
@@ -205,7 +205,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/boleira/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:36359
+JOURNAL_STREAM = 8:26394
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -257,9 +257,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2050, inode 36701410): 14 files, no impossibilities.
+# . (device 2050, inode 36701410): 23 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -268,7 +268,7 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Files
 
 # Not a target:
-conjunto.c:
+cod1.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -276,19 +276,19 @@ conjunto.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 20:57:21.207784158
+#  Last modified 2022-08-30 10:03:14.440603502
 #  File has been updated.
 #  Successfully updated.
 
+ 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 7):
-	rm aula1.o conjunto.o
+	rm edit main.o conjunto1.o
 
 # Not a target:
- 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -301,23 +301,23 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-main: aula1.c conjunto.c aula1.h
+# Not a target:
+main.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+main: main.c conjunto1.c cod1.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 2):
-	gcc -c aula1.c conjunto.c
-	gcc -o conjunto aula1.o conjunto.o
-	./conjunto
+	gcc -c main.c conjunto1.c
+	gcc -o exemplo main.o conjunto1.o
+	./exemplo
 
 # Not a target:
-aula1.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-aula1.h:
+conjunto1.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -330,12 +330,12 @@ aula1.h:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 181 B / avg = 8 B
-# current buf: size = 8162 B / used = 181 B / count = 21 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 256 B / avg = 8 B
+# current buf: size = 8162 B / used = 256 B / count = 30 / avg = 8 B
 
-# strcache performance: lookups = 30 / hit rate = 30%
+# strcache performance: lookups = 39 / hit rate = 23%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Thu Aug 25 23:23:46 2022
+# Load=30/8192=0%, Rehash=0, Collisions=0/39=0%
+# Finished Make data base on Wed Aug 31 08:45:39 2022
 
  

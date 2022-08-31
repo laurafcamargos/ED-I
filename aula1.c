@@ -24,7 +24,4 @@ int main() {
 
     meu_elemento = 5;
     printf("pertence %d\n",pertence(meu_elemento,meu_conjunto));
-    
-
-    return 0;
 }
