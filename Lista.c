@@ -17,7 +17,25 @@ int inserir(t_lista *lista, t_elemento elemento) {
     return SUCESSO;
 }
 int remover(t_lista *lista,t_elemento elemento);
-t_elemento pesquisar(t_lista *lista,t_chave t_chave);
+
+static t_aṕontador pesquisa_pos(t_lista *lista,t_chave t_chave) {
+    t_apontador P = lista -> primeiro;
+    if (P == NULL)
+    {
+        return NULL; // lista vazia ou ta procurando algum elemento que nao tem
+    }
+    while (P != NULL)
+    {
+        if (P->elemento.chave == chave;
+            return P;
+        P = P->Proximo;
+    }
+    return NULL;
+}
+t_elemento pesquisar(t_lista *lista, t_chave chave) {
+	return lista->elementos[pesquisa_pos(lista, chave)];
+}
+
 int alterar(t_lista *lista,t_elemento novo_elemento);
 int excluir(t_lista *lista);
 int vazia(t_lista *lista) {

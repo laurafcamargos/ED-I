@@ -1,7 +1,6 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/boleira/Documentos/GitHub/ED-I'
-gcc -c main.c conjunto1.c
-gcc -o exemplo main.o conjunto1.o
-./exemplo
+gcc -c aula1.c conjunto.c
+gcc -o main aula1.o conjunto.o
 make: Leaving directory '/home/boleira/Documentos/GitHub/ED-I'
  
