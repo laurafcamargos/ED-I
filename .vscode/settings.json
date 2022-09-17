@@ -4,5 +4,6 @@
     "files.associations": {
         "stdio.h": "c",
         "limits": "c"
-    }
+    },
+    "C_Cpp.dimInactiveRegions": false
 }

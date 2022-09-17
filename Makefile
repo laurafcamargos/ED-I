@@ -1,9 +1,14 @@
-main: aula1.c conjunto.c aula1.h
-	gcc -c aula1.c conjunto.c
-	gcc -o main aula1.o conjunto.o
-
-clean: 
-	rm aula1.o conjunto.o main
+CC = gcc
+CFLAGS = -Wall
+	
+main: listadinam.o listadinam_main.c
+	$(CC) -o main listadinam.o listadinam_main.c
+	
+listadinam.o: listadinam.c listadinam.h
+	$(CC) -c listadinam.c
+	
+clean:
+	rm main *.o
 
 executa: main
 	./main
