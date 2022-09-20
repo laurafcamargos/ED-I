@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall
 	
-main: listadinam.o listadinam_main.c
-	$(CC) -o main listadinam.o listadinam_main.c
+main: fila1.o fila1_main.c
+	$(CC) -o main fila1.o fila1_main.c
 	
-listadinam.o: listadinam.c listadinam.h
-	$(CC) -c listadinam.c
+fila1.o: fila1.c fila1.h
+	$(CC) -c fila1.c
 	
 clean:
 	rm main *.o

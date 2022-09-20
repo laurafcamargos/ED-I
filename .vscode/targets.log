@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Sep 17 09:30:22 2022
+# Make data base, printed on Mon Sep 19 23:27:59 2022
 
 # Variables
 
@@ -24,6 +24,8 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 SNAP_INSTANCE_KEY = 
 # environment
 GJS_DEBUG_OUTPUT = stderr
+# environment
+LOCAL_GIT_DIRECTORY = /usr/lib/github-desktop/resources/app/git
 # environment
 VSCODE_CWD = /home/boleira
 # default
@@ -55,7 +57,7 @@ VSCODE_CODE_CACHE_PATH = /home/boleira/.config/Code/CachedData/74b1f979648cc44d3
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.CHZVS1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.S94VS1
 # default
 .LOADED := 
 # default
@@ -66,8 +68,6 @@ MAKEFLAGS = pqrR
 CURDIR := /home/boleira/Documentos/GitHub/ED-I
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -91,15 +91,13 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 29479
+VSCODE_PID = 12608
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
-SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1861,unix/laurafcamargos:/tmp/.ICE-unix/1861
+SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1892,unix/laurafcamargos:/tmp/.ICE-unix/1892
 # automatic
 *F = $(notdir $*)
 # environment
@@ -126,8 +124,6 @@ GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 SHLVL = 0
 # environment
 MAKELEVEL := 0
-# environment
-IM_CONFIG_CHECK_ENV = 1
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
@@ -145,7 +141,7 @@ SNAP_USER_COMMON = /home/boleira/snap/code/common
 # environment
 SNAP = /snap/code/108
 # environment
-INVOCATION_ID = d6c30c311e444e0cba953bfd7a0e6c97
+INVOCATION_ID = e133403dd2f64aeebe3a356948a23afd
 # environment
 SNAP_REVISION = 108
 # environment
@@ -154,32 +150,28 @@ SNAP_REAL_HOME = /home/boleira
 USERNAME = boleira
 # environment
 GNOME_SETUP_DISPLAY = :1
-# environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
 # automatic
 ?F = $(notdir $?)
 # environment
 XDG_CURRENT_DESKTOP = Unity
-# environment
-LS_COLORS = 
 # automatic
 +F = $(notdir $+)
 # environment
 DESKTOP_SESSION = ubuntu
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+ORIGINAL_XDG_CURRENT_DESKTOP = Unity
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = boleira
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/github-desktop.desktop
 # environment
 SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := main
 # environment
-SYSTEMD_EXEC_PID = 1886
+SYSTEMD_EXEC_PID = 1916
 # environment
 DISPLAY = :0
 # environment
@@ -193,11 +185,9 @@ SNAP_DATA = /var/snap/code/108
 # environment
 SNAP_CONTEXT = IaWFdsO2TrgsjOiG2AkDnuc6R2rp2kTBLfnAebMusitSYM_s5pw1
 # environment
-MANAGERPID = 1698
+MANAGERPID = 1719
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 29419
-# environment
-_ = /snap/code/108/usr/share/code/code
+GIO_LAUNCHED_DESKTOP_FILE_PID = 11685
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 2)
@@ -205,7 +195,7 @@ CFLAGS = -Wall
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/boleira/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:33390
+JOURNAL_STREAM = 8:33446
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -251,7 +241,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=119/1024=12%, Rehash=0, Collisions=3/149=2%
+# Load=114/1024=11%, Rehash=0, Collisions=3/144=2%
 
 # Pattern-specific Variable Values
 
@@ -259,9 +249,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2050, inode 36701410): 17 files, no impossibilities.
+# . (device 2050, inode 36700689): 19 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -293,7 +283,8 @@ listadinam_main.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-15 08:54:47.341417928
+ 
+#  Last modified 2022-09-19 23:27:52.159942876
 #  File has been updated.
 #  Successfully updated.
 
@@ -330,7 +321,6 @@ listadinam.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 listadinam.h:
@@ -349,9 +339,9 @@ listadinam.h:
 # strcache buffers: 1 (0) / strings = 26 / storage = 264 B / avg = 10 B
 # current buf: size = 8162 B / used = 264 B / count = 26 / avg = 10 B
 
-# strcache performance: lookups = 39 / hit rate = 33%
+# strcache performance: lookups = 41 / hit rate = 36%
 # hash-table stats:
-# Load=26/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Sat Sep 17 09:30:22 2022
+# Load=26/8192=0%, Rehash=0, Collisions=0/41=0%
+# Finished Make data base on Mon Sep 19 23:27:59 2022
 
  
