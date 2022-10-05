@@ -22,7 +22,7 @@ int inserir(t_lista *lista, t_elemento elemento)
   aux = lista->primeiro;
   while (aux != NULL)
   { // verificar se tem nome repetido
-    if (strcmp(aux->elemento.nome, elemento.nome) == 0)
+    if (strcmp(aux->elemento.nome, elemento.nome) == 0) // ==0 → valores da string são iguais
     {
       printf("Contatinho ja inserido\n");
       return JA_EXISTE;

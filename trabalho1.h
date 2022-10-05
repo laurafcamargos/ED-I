@@ -1,6 +1,5 @@
 #ifndef TRABALHO1_H
 #define TRABALHO1_H
-
 #define JA_EXISTE -2
 #define POS_INVALIDA -1
 #define ERRO_CHEIA 0
