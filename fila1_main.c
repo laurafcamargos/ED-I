@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include "fila1.h"
 
-int main() {
+int main()
+{
+
     t_fila f;
     t_elemento e;
-	t_apontador p;
+    t_apontador p;
     t_no no;
 
     criar(&f);
@@ -36,5 +38,5 @@ int main() {
     no = frente(&f);
     printf("%d (%d elementos)\n", no.elemento.chave, contar(&f));
 
-	return 0;
+    return 0;
 }

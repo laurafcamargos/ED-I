@@ -8,19 +8,22 @@
 
 typedef int t_chave;
 
-typedef struct {
+typedef struct
+{
 	t_chave chave;
 	char nome[50];
 } t_elemento;
 
 typedef struct t_no *t_apontador;
-typedef struct t_no { //cada nó contém um objeto de determinado tipos e o endereço da célula seguinte
+typedef struct t_no
+{ // cada nó contém um objeto de determinado tipos e o endereço da célula seguinte
 	t_elemento elemento;
 	t_apontador proximo;
 } t_no;
 
-typedef struct {
-	t_apontador primeiro,ultimo;
+typedef struct
+{
+	t_apontador primeiro, ultimo;
 } t_fila;
 
 int criar(t_fila *fila);
