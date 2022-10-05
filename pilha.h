@@ -1,5 +1,5 @@
-#ifndef FILA1_H
-#define FILA1_H
+#ifndef PILHA_H
+#define PILHA_H
 
 #define NO_VAZIO -2
 #define ERRO_CHEIA -1
@@ -20,16 +20,16 @@ typedef struct t_no { //cada nó contém um objeto de determinado tipos e o ende
 } t_no;
 
 typedef struct {
-	t_apontador primeiro,ultimo;
-} t_fila;
+	t_apontador topo;
+} t_pilha;
 
-int criar(t_fila *fila);
-int enfileirar(t_fila *fila, t_elemento elemento);
-int desenfileirar(t_fila *fila);
-t_no topo(t_fila *fila);
-int vazia(t_fila *fila);
-int cheia(t_fila *fila);
-void imprimir(t_fila *fila);
-int contar(t_fila *fila);
+int criar(t_pilha *pilha);
+int empilhar(t_pilha *pilha, t_elemento elemento);
+int desempilhar(t_pilha *pilha);
+t_no topo(t_pilha *pilha);
+int vazia(t_pilha *pilha);
+int cheia(t_pilha *pilha);
+void imprimir(t_pilha *pilha);
+int contar(t_pilha *pilha);
 
 #endif

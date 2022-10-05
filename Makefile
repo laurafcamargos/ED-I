@@ -1,14 +1,14 @@
 CC = gcc
 CFLAGS = -Wall
 	
-main: fila1.o fila1_main.c
-	$(CC) -o main fila1.o fila1_main.c
+all: trabalho1.o trabalho1_main.c
+	$(CC) -o main trabalho1.o trabalho1_main.c
 	
-fila1.o: fila1.c fila1.h
-	$(CC) -c fila1.c
+trabalho1.o: trabalho1.c trabalho1.h
+	$(CC) -c trabalho1.c
 	
 clean:
 	rm main *.o
 
-executa: main
+run: main
 	./main

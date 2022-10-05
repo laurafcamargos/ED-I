@@ -44,10 +44,10 @@ int desenfileirar(t_fila *fila) {
     return SUCESSO;//geralmente retorna um nó que acabou de remover
 }
 t_no frente(t_fila *fila) {
-    //if (vazia(fila))
-    //{
-     //   return NO_VAZIO;
-    //}
+    if (vazia(fila))
+    {
+       printf("Nó vazio!\n");
+    }
     
     return *(fila->primeiro);
 }

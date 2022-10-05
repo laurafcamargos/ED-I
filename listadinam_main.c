@@ -6,12 +6,12 @@ int main()
 {
 
 	t_lista L;
+	int i;
 	t_elemento item;
 	t_apontador P;
-    int i;
 	criar(&L);
 
-	item.chave = 5;
+	scanf("%d",&item.chave);
 	inserir(&L, item);
 
 	item.chave = 1;
