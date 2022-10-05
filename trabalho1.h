@@ -8,19 +8,22 @@
 
 typedef char t_chave[12];
 
-typedef struct {
+typedef struct
+{
   t_chave nome;
   long int numero;
 } t_elemento;
 
 typedef struct t_no *t_apontador;
-typedef struct t_no { // cada nó contém um objeto de determinado tipos e o
-                      // endereço da célula seguinte
+typedef struct t_no
+{ // cada nó contém um objeto de determinado tipos e o
+  // endereço da célula seguinte
   t_elemento elemento;
   t_apontador proximo;
 } t_no;
 
-typedef struct {
+typedef struct
+{
   t_apontador primeiro, ultimo;
 } t_lista;
 
@@ -28,6 +31,6 @@ void criar(t_lista *lista);
 int inserir(t_lista *lista, t_elemento elemento);
 void remover(t_lista *lista, t_chave nome);
 t_apontador pesquisa_pos(t_lista *lista, t_chave nome); // devolve o apontador
-void pesquisar(t_lista *lista, t_chave nome);     // devolve o numero
+void pesquisar(t_lista *lista, t_chave nome);           // devolve o numero
 void alterar(t_lista *lista, t_elemento elemento);
 #endif

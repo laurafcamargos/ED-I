@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-void criar(t_lista *lista) {
+void criar(t_lista *lista)
+{
   lista->primeiro = NULL;
   lista->ultimo = NULL;
 }
 
-int inserir(t_lista *lista, t_elemento elemento) {
+int inserir(t_lista *lista, t_elemento elemento)
+{
   t_apontador novo = (t_apontador)malloc(sizeof(t_no));
   t_apontador aux = (t_apontador)malloc(sizeof(t_no));
 
@@ -18,8 +20,10 @@ int inserir(t_lista *lista, t_elemento elemento) {
     return ERRO_CHEIA;
 
   aux = lista->primeiro;
-  while (aux != NULL) { // verificar se tem nome repetido
-    if (strcmp(aux->elemento.nome, elemento.nome) == 0) {
+  while (aux != NULL)
+  { // verificar se tem nome repetido
+    if (strcmp(aux->elemento.nome, elemento.nome) == 0)
+    {
       printf("Contatinho ja inserido\n");
       return JA_EXISTE;
     }
@@ -33,42 +37,50 @@ int inserir(t_lista *lista, t_elemento elemento) {
 
   return SUCESSO;
 }
-t_apontador pesquisa_pos(t_lista *lista, t_chave nome) {
+t_apontador pesquisa_pos(t_lista *lista, t_chave nome)
+{
 
   t_apontador P = lista->primeiro;
   if (P == NULL)
     return NULL;
-  while (P != NULL) {
+  while (P != NULL)
+  {
     if (strcmp(P->elemento.nome, nome) == 0)
       return P;
     P = P->proximo;
   }
   return P;
 }
-void pesquisar(t_lista *lista, t_chave nome) {
+void pesquisar(t_lista *lista, t_chave nome)
+{
   t_apontador P = pesquisa_pos(lista, nome);
 
   if (P->elemento.nome == NULL)
     printf("Operacao Invalida: contatinho nao encontrado\n");
-  else {
+  else
+  {
     printf("Contatinho encontrado: telefone %ld \n", P->elemento.numero);
   }
 }
-static int remove_posicao(t_lista *lista, t_apontador p) {
+static int remove_posicao(t_lista *lista, t_apontador p)
+{
   // lista vazia
-  if (p == NULL) {
+  if (p == NULL)
+  {
     return POS_INVALIDA;
   }
 
   // unico elemento
-  if (p == lista->primeiro && p == lista->ultimo) {
+  if (p == lista->primeiro && p == lista->ultimo)
+  {
     criar(lista);
     free(p);
     return SUCESSO;
   }
 
   // remove do inicio
-  if (p == lista->primeiro) {
+  if (p == lista->primeiro)
+  {
     lista->primeiro = lista->primeiro->proximo;
     free(p);
     return SUCESSO;
@@ -77,7 +89,8 @@ static int remove_posicao(t_lista *lista, t_apontador p) {
   // remove do meio
   t_apontador aux =
       lista->primeiro; // necessário criar o aux para nao perder a posição
-  while (aux->proximo != NULL && aux->proximo != p) {
+  while (aux->proximo != NULL && aux->proximo != p)
+  {
     aux = aux->proximo; // passa a apontar pra prox posição
   }
 
@@ -86,27 +99,29 @@ static int remove_posicao(t_lista *lista, t_apontador p) {
                   // aponta pro c, o a prox = b prox, pois ele passa a apontar
                   // pro c, e dps da free no ponteiro do b
   // remove do fim
-  if (aux->proximo == NULL) {
+  if (aux->proximo == NULL)
+  {
     lista->ultimo = aux;
   }
   free(p);
   return SUCESSO;
 }
 
-void remover(t_lista *lista, t_chave nome) {
+void remover(t_lista *lista, t_chave nome)
+{
   t_apontador P = pesquisa_pos(lista, nome);
   int elemento = remove_posicao(lista, P);
-  if (elemento == POS_INVALIDA) {
+  if (elemento == POS_INVALIDA)
+  {
     printf("Operacao invalida: contatinho nao encontrado\n");
   }
 }
 
-void alterar(t_lista *lista, t_elemento e) {
+void alterar(t_lista *lista, t_elemento e)
+{
   t_apontador P = pesquisa_pos(lista, e.nome);
   if (P->elemento.nome == NULL)
     printf("Operacao Invalida: contatinho nao encontrado\n");
-  else     
-    P-> elemento.numero = e.numero;  
+  else
+    P->elemento.numero = e.numero;
 }
-
-

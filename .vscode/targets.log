@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Oct  4 21:29:57 2022
+# Make data base, printed on Wed Oct  5 17:47:25 2022
 
 # Variables
 
@@ -55,7 +53,7 @@ VSCODE_CODE_CACHE_PATH = /home/boleira/.config/Code/CachedData/74b1f979648cc44d3
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.C465S1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.YXHHT1
 # default
 .LOADED := 
 # default
@@ -91,7 +89,7 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 41673
+VSCODE_PID = 34363
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -99,7 +97,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1877,unix/laurafcamargos:/tmp/.ICE-unix/1877
+SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/2154,unix/laurafcamargos:/tmp/.ICE-unix/2154
 # automatic
 *F = $(notdir $*)
 # environment
@@ -145,7 +143,7 @@ SNAP_USER_COMMON = /home/boleira/snap/code/common
 # environment
 SNAP = /snap/code/108
 # environment
-INVOCATION_ID = 99053f6dc8df43708d38c7174ce1d647
+INVOCATION_ID = 3f058435db2448d2b7bb056352659d7b
 # environment
 SNAP_REVISION = 108
 # environment
@@ -177,9 +175,9 @@ GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.deskto
 # environment
 SNAP_ARCH = amd64
 # makefile
-.DEFAULT_GOAL := main
+.DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1901
+SYSTEMD_EXEC_PID = 2176
 # environment
 DISPLAY = :0
 # environment
@@ -193,9 +191,9 @@ SNAP_DATA = /var/snap/code/108
 # environment
 SNAP_CONTEXT = IaWFdsO2TrgsjOiG2AkDnuc6R2rp2kTBLfnAebMusitSYM_s5pw1
 # environment
-MANAGERPID = 1709
+MANAGERPID = 1985
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 41620
+GIO_LAUNCHED_DESKTOP_FILE_PID = 34311
 # environment
 _ = /snap/code/108/usr/share/code/code
 # environment
@@ -205,7 +203,7 @@ CFLAGS = -Wall
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/boleira/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:36133
+JOURNAL_STREAM = 8:33438
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -251,7 +249,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=119/1024=12%, Rehash=0, Collisions=3/149=2%
+# Load=119/1024=12%, Rehash=0, Collisions=3/153=2%
 
 # Pattern-specific Variable Values
 
@@ -259,9 +257,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2050, inode 36700689): 28 files, no impossibilities.
+# . (device 2050, inode 36700689): 26 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -271,30 +269,24 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Not a target:
 trabalho1.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-executa: main
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
-	./main
+#  Implicit rule search has been done.
+#  Last modified 2022-10-05 16:42:44.299886865
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-09-26 08:33:20.427926887
+#  Last modified 2022-10-05 16:46:40.24753559
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 trabalho1.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-10-05 16:42:20.031962122
+#  File has been updated.
+#  Successfully updated.
 
 clean:
 #  Implicit rule search has not been done.
@@ -302,6 +294,7 @@ clean:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 11):
 	rm main *.o
+ 
 
 # Not a target:
 .DEFAULT:
@@ -311,26 +304,62 @@ clean:
 
 trabalho1.o: trabalho1.c trabalho1.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := trabalho1.o
+# automatic
+# * := 
+# automatic
+# < := trabalho1.c
+# automatic
+# + := trabalho1.c trabalho1.h
+# automatic
+# % := 
+# automatic
+# ^ := trabalho1.c trabalho1.h
+# automatic
+# ? := trabalho1.c trabalho1.h
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/12=17%
 #  recipe to execute (from 'Makefile', line 8):
 	$(CC) -c trabalho1.c
 	
 
-# Not a target:
-all:
+all: trabalho1.o trabalho1_main.c
 #  Command line target.
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
-
-main: trabalho1.o trabalho1_main.c
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 #  recipe to execute (from 'Makefile', line 5):
 	$(CC) -o main trabalho1.o trabalho1_main.c
 	
+
+run: main
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	./main
+
+# Not a target:
+main:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 trabalho1_main.c:
@@ -339,19 +368,19 @@ trabalho1_main.c:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/29=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 35 / storage = 362 B / avg = 10 B
-# current buf: size = 8162 B / used = 362 B / count = 35 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 35 / storage = 358 B / avg = 10 B
+# current buf: size = 8162 B / used = 358 B / count = 35 / avg = 10 B
 
-# strcache performance: lookups = 50 / hit rate = 30%
+# strcache performance: lookups = 49 / hit rate = 28%
 # hash-table stats:
-# Load=35/8192=0%, Rehash=0, Collisions=0/50=0%
-# Finished Make data base on Tue Oct  4 21:29:57 2022
+# Load=35/8192=0%, Rehash=0, Collisions=0/49=0%
+# Finished Make data base on Wed Oct  5 17:47:25 2022
 
  
