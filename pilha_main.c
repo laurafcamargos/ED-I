@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "pilha.h"
 
-int main() {
+int main()
+{
     t_pilha f;
     t_elemento e;
-	t_apontador p;
+    t_apontador p;
     t_no no;
 
     criar(&f);
@@ -32,5 +33,5 @@ int main() {
     no = topo(&f);
     printf("%d (%d elementos)\n", no.elemento.chave, contar(&f));
 
-	return 0;
+    return 0;
 }
