@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'listadinam.c', needed by 'listadinam.o'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Oct 12 16:02:42 2022
+# Make data base, printed on Thu Oct 13 09:04:20 2022
 
 # Variables
 
@@ -33,7 +35,7 @@ QT_ACCESSIBILITY = 1
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/109/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/110/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -49,12 +51,11 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/home/boleira/.local/share/flatpak/exports/sha
 # automatic
 %F = $(notdir $%)
 # environment
- 
-VSCODE_CODE_CACHE_PATH = /home/boleira/.config/Code/CachedData/64bbfbf67ada9953918d72e1df2f4d8e537d340e
+VSCODE_CODE_CACHE_PATH = /home/boleira/.config/Code/CachedData/129500ee4c8ab7263461ffe327268ba56b9f210d
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.61EXT1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.K6B0T1
 # default
 .LOADED := 
 # default
@@ -90,7 +91,7 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 114926
+VSCODE_PID = 4151
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -98,7 +99,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/1894,unix/laurafcamargos:/tmp/.ICE-unix/1894
+SESSION_MANAGER = local/laurafcamargos:@/tmp/.ICE-unix/2099,unix/laurafcamargos:/tmp/.ICE-unix/2099
 # automatic
 *F = $(notdir $*)
 # environment
@@ -108,7 +109,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"0aca85a932c5a0c5ac56b9492e21ce19.pt-br","_translationsConfigFile":"/home/boleira/.config/Code/clp/0aca85a932c5a0c5ac56b9492e21ce19.pt-br/tcf.json","_cacheRoot":"/home/boleira/.config/Code/clp/0aca85a932c5a0c5ac56b9492e21ce19.pt-br","_resolvedLanguagePackCoreLocation":"/home/boleira/.config/Code/clp/0aca85a932c5a0c5ac56b9492e21ce19.pt-br/64bbfbf67ada9953918d72e1df2f4d8e537d340e","_corruptedFile":"/home/boleira/.config/Code/clp/0aca85a932c5a0c5ac56b9492e21ce19.pt-br/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"75ef536b0d0cdd815d029979870c35c2.pt-br","_translationsConfigFile":"/home/boleira/.config/Code/clp/75ef536b0d0cdd815d029979870c35c2.pt-br/tcf.json","_cacheRoot":"/home/boleira/.config/Code/clp/75ef536b0d0cdd815d029979870c35c2.pt-br","_resolvedLanguagePackCoreLocation":"/home/boleira/.config/Code/clp/75ef536b0d0cdd815d029979870c35c2.pt-br/129500ee4c8ab7263461ffe327268ba56b9f210d","_corruptedFile":"/home/boleira/.config/Code/clp/75ef536b0d0cdd815d029979870c35c2.pt-br/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -142,11 +143,11 @@ LANGUAGE = pt_BR:pt:en
 # environment
 SNAP_USER_COMMON = /home/boleira/snap/code/common
 # environment
-SNAP = /snap/code/109
+SNAP = /snap/code/110
 # environment
-INVOCATION_ID = 7b5370a1514043408b600d1c20096ed7
+INVOCATION_ID = 37346401dc674fa6b0e8675202be6352
 # environment
-SNAP_REVISION = 109
+SNAP_REVISION = 110
 # environment
 SNAP_REAL_HOME = /home/boleira
 # environment
@@ -178,7 +179,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1924
+SYSTEMD_EXEC_PID = 2122
 # environment
 DISPLAY = :0
 # environment
@@ -188,15 +189,15 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-SNAP_DATA = /var/snap/code/109
+SNAP_DATA = /var/snap/code/110
 # environment
 SNAP_CONTEXT = IaWFdsO2TrgsjOiG2AkDnuc6R2rp2kTBLfnAebMusitSYM_s5pw1
 # environment
-MANAGERPID = 1740
+MANAGERPID = 1932
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 114872
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4098
 # environment
-_ = /snap/code/109/usr/share/code/code
+_ = /snap/code/110/usr/share/code/code
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 2)
@@ -204,7 +205,7 @@ CFLAGS = -Wall
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/boleira/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:38059
+JOURNAL_STREAM = 8:36929
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -216,11 +217,11 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-2765ecdd-1.72.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-2765ecdd-1.72.1-main.sock
 # environment
 SNAP_NAME = code
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/109/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/110/usr/share/glib-2.0/schemas
 # environment
 IM_CONFIG_PHASE = 1
 # default
@@ -228,7 +229,7 @@ IM_CONFIG_PHASE = 1
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = 64bbfbf6
+SNAP_VERSION = 129500ee
 # default
 SUFFIXES := 
 # environment
@@ -242,7 +243,7 @@ SNAP_COMMON = /var/snap/code/common
 # makefile (from 'Makefile', line 1)
 CC = gcc
 # environment
-SNAP_USER_DATA = /home/boleira/snap/code/109
+SNAP_USER_DATA = /home/boleira/snap/code/110
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -250,7 +251,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=119/1024=12%, Rehash=0, Collisions=3/153=2%
+# Load=119/1024=12%, Rehash=0, Collisions=3/149=2%
 
 # Pattern-specific Variable Values
 
@@ -258,9 +259,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2050, inode 36700689): 36 files, no impossibilities.
+# . (device 2050, inode 36700689): 16 files, no impossibilities.
 
-# 36 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -270,28 +271,8 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 listadinam.o: listadinam.c listadinam.h
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  Last modified 2022-10-10 15:23:30.787707185
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := listadinam.o
-# automatic
-# * := 
-# automatic
-# < := listadinam.c
-# automatic
-# + := listadinam.c listadinam.h
-# automatic
-# % := 
-# automatic
-# ^ := listadinam.c listadinam.h
-# automatic
-# ? := listadinam.c
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/12=17%
+#  File does not exist.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 8):
 	$(CC) -c listadinam.c
 	
@@ -304,6 +285,7 @@ listadinam_main.c:
 
 # Not a target:
 Makefile:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2022-10-11 21:14:53.087977585
 #  File has been updated.
@@ -326,17 +308,13 @@ all: listadinam.o listadinam_main.c
 #  Command line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 5):
 	$(CC) -o main listadinam.o listadinam_main.c
 	
 
 run: main
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -349,39 +327,31 @@ main:
 #  File has not been updated.
 
 # Not a target:
-.SUFFIXES:
+listadinam.c:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+listadinam.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-listadinam.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-10-11 21:18:21.489625941
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-listadinam.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-19 23:27:52.159942876
-#  File has been updated.
-#  Successfully updated.
-
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/29=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/28=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 43 / storage = 449 B / avg = 10 B
-# current buf: size = 8162 B / used = 449 B / count = 43 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 256 B / avg = 9 B
+# current buf: size = 8162 B / used = 256 B / count = 28 / avg = 9 B
 
-# strcache performance: lookups = 59 / hit rate = 27%
+# strcache performance: lookups = 38 / hit rate = 26%
 # hash-table stats:
-# Load=43/8192=1%, Rehash=0, Collisions=0/59=0%
-# Finished Make data base on Wed Oct 12 16:02:42 2022
+# Load=28/8192=0%, Rehash=0, Collisions=0/38=0%
+# Finished Make data base on Thu Oct 13 09:04:20 2022
 
  

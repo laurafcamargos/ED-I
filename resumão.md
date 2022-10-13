@@ -609,8 +609,11 @@ int tamanho (t_lista *lista) {
 - Como qualquer Lista Estática é importante manter a informação da quantidade de espaços alocados (MAX_TAM)
 - Como iterar 5 e 0(fazer a volta)? usando MOD(%). 
 - Busca sequencial basta iterar de inicio para fim.
-- Busca binária é preciso considerar que o início não é 0 e que é possivel estourar o vetor.PIVO = ((inicio+fim)/2)%(max_tam)- Na inserção verificações de limites são importantes para evitar que dados sejam sobrescritos.O ponteiro para o fim é atualizado(anda um passo)
-- O dado é inserido no fim.
+- Busca binária é preciso considerar que o início não é 0 e que é possivel estourar o vetor. PIVO = ((inicio+fim)/2)%(max_tam)
+- Na inserção, verificações de limites são importantes para evitar que dados sejam sobrescritos.
+- O dado é inserido no fim. → fim=(fim+1)%TAM
+- Ao remover um número fica inicio =(inicio+1)%TAM. 
+- Se o inicio e fim se encontrarem ela tá cheia, ai não tem como inserir.
 
 ### Lista Circular (implementação dinâmica)
 
@@ -618,11 +621,14 @@ int tamanho (t_lista *lista) {
 
 - Similar à lista padrão
 - A diferença é que o próximo do último é o primeiro(ao invés de NULL)
+- ultimo->prox = primeiro.(simplesmente ligada) 
+- ultimo->prox = primeiro;
+  primeiro->ant = ultimo; (na duplamente ligada)
 
 ## Aplicações de listas ligadas
 
 - Visualizador de imagens: As imagens Próximo e Anterior são ligadas, portanto, podem ser acessadas pelos botões “próximo” e “anterior”.
-- Página seguinte e anterior em um navegador da web: Podemos acessar o “url” anterior e seguinte pesquisado em um navegador da web pressionando os botões “voltar” e “próximo”, pois eles estão conectados como uma lista ligadas.
+- Página seguinte e anterior em um navegador da web: Podemos acessar o “url” anterior e seguinte pesquisado em um navegador da web pressionando os botões “voltar” e “próximo”, pois eles estão conectados como uma lista ligadas.(usa pilhas)
 - Music Player: As músicas no music player são conectadas à música anterior e seguinte. Você pode ouvir as músicas do início ou do final da lista.
 
 # Estrutura de dados
@@ -729,10 +735,42 @@ int vazia(t_pilha *pilha)
 ```
 **Aplicações:**
 
-- Undo e redo de editores de texto(similar ao avançar e voltar do navegador
+- Undo e redo de editores de texto (similar à pags de navegação):  
 - Avaliar expressões matemáticas, verificar parênteses e chaves
-- Estrutura auxiliar em diversos algoritmos
 - Simular recursão
+
+**Notação Pós-fixa:**
+
+```
+para cada elemento E da expressão faça
+   Se E é operando / número
+		empilha(P,E)
+   Senão //operador
+		V1 = desempilha(P)
+		V2 = desempilha(P)
+		empilha(V2 operador V1)
+Se conta(P) > 1
+   INVALIDO
+Senão
+   Resultado = topo(P)
+```
+**Como tornar a infixa em pós-fixa?**
+
+```
+para cada elemento E da expressão faça
+	Se E é operando / número
+		Imprime E
+	Senão se E é ‘(‘
+		empilha(P, E)
+	Senão se E ')’
+		imprime(desempilha(P)) até que topo(P) seja ‘(‘
+	Senão // operador
+		enquanto precedência(E) <= precedência(topo(P))
+			imprime(desempilha(P))
+		empilha(P, E)
+enquanto não(vazia(P))
+	imprime(desempilha(P))
+```
 
 #### Filas
 
