@@ -15,7 +15,7 @@ typedef struct
 
 typedef struct t_no *t_apontador;
 typedef struct t_no
-{ // cada nó contém um objeto de determinado tipos e o
+{ // cada nó contém um objeto de determinado tipo e o
   // endereço da célula seguinte
   t_elemento elemento;
   t_apontador proximo;

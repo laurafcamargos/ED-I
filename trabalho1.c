@@ -94,11 +94,10 @@ static int remove_posicao(t_lista *lista, t_apontador p)
     aux = aux->proximo; // passa a apontar pra prox posição
   }
 
-  aux->proximo =
-      p->proximo; // exemplo do a,b,c,tipo, vc aponta pro b com o aux, o b
+  aux->proximo = p->proximo; // exemplo do a,b,c,tipo, vc aponta pro b com o aux, o b
                   // aponta pro c, o a prox = b prox, pois ele passa a apontar
                   // pro c, e dps da free no ponteiro do b
-  // remove do fim
+                  // remove do fim
   if (aux->proximo == NULL)
   {
     lista->ultimo = aux;

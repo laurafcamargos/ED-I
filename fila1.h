@@ -11,7 +11,7 @@ typedef int t_chave;
 typedef struct
 {
 	t_chave chave;
-	char nome[50];
+	//char nome[50];
 } t_elemento;
 
 typedef struct t_no *t_apontador;

@@ -107,21 +107,22 @@ int tamanho (t_lista *lista) {
 
 void reverse(t_lista *lista)
 {
-	t_apontador P = lista->primeiro; // p =Piliar
+	t_apontador P = lista->primeiro; 
 	if (lista->primeiro == NULL)
 		printf("Lista vazia\n");
 	if (lista->primeiro->proximo == NULL)
 	{
 		printf("Lista unitária\n");
 	}
+	
 	t_apontador anterior = NULL;
 	t_apontador proximo = lista->primeiro;
-	do
+	while (proximo != NULL)
 	{
 		proximo = lista->primeiro->proximo;
 		lista->primeiro->proximo = anterior; // inverter o prox
 		anterior = lista->primeiro;			 // andar com o ant pra frente
 		lista->primeiro = proximo;
-	} while (proximo != NULL);
+	} 
 	lista->primeiro = anterior;
 } 

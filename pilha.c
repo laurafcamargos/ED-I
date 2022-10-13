@@ -9,8 +9,8 @@ int criar(t_pilha *pilha)
 	num_nos = 0;
 } // count = 0
 
-int empilhar(t_pilha *pilha, t_elemento elemento)
-{
+
+{int empilhar(t_pilha *pilha, t_elemento elemento)
 
 	t_apontador novo;
 	novo = (t_apontador)malloc(sizeof(t_no));
