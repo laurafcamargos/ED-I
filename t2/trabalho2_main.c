@@ -13,6 +13,7 @@ int main() {
   criar_fila(&fila);
   criar_pilha(&pilha);
   scanf("%d", &N);
+  int vet[N];
   for (i = 0; i < N; i++) {
     scanf("%d", &K);
     for (j = 0; j < K; j++) {
@@ -34,15 +35,19 @@ int main() {
         flagfila++;
       }
     }
-      
+
     if (flagfila > 0 && flagpilha > 0) {
-      printf("\nimpossivel");
+      // printf("\nimpossivel");
+      vet[i] = 0;
     } else if (flagfila > 0) {
-      printf("\npilha");
+      // printf("\npilha");
+      vet[i] = 1;
     } else if (flagpilha > 0) {
-      printf("\nfila");
+      // printf("\nfila");
+      vet[i] = 2;
     } else {
-      printf("\nindefinido");
+      // printf("\nindefinido");
+      vet[i] = 3;
     }
     libera_fila(&fila);
     libera_pilha(&pilha);
@@ -51,5 +56,23 @@ int main() {
     flagfila = 0;
     flagpilha = 0;
   }
+
+  for (int k = 0; k < N; k++) {
+    switch (vet[k]) {
+    case 0:
+      printf("impossivel\n");
+      break;
+    case 1:
+      printf("pilha\n");
+      break;
+    case 2:
+      printf("fila\n");
+      break;
+    case 3:
+      printf("indefinido\n");
+      break;
+    }
+  }
+
   return 0;
 }
