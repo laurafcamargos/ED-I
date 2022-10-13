@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/boleira/Documentos/GitHub/ED-I'
-make: Leaving directory '/home/boleira/Documentos/GitHub/ED-I'
- 
-make: *** No rule to make target 'listadinam.c', needed by 'listadinam.o'.
-make: *** No rule to make target 'listadinam.h', needed by 'listadinam.o'.
-make: *** No rule to make target 'listadinam_main.c', needed by 'all'.
-
