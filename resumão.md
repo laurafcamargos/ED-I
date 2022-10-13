@@ -45,8 +45,8 @@ typedef struct {
 
 ## Listas
 
-- podem ser ordanadas ou não
-- operações de busca e removação são comumente feitas em relação à chave do elemento
+- podem ser ordenadas ou não
+- operações de busca e remoção são comumente feitas em relação à chave do elemento
 - a inserção varia:
 |ordenada|não ordenada|
 |___|___|
@@ -88,7 +88,7 @@ typedef struct {
 ```
 - **funções comuns:**
 	- inicializar a estrutura
-	- quantida de elementos
+	- quantidade de elementos
 	- exibir elemento
 	- buscar elementos
 	- inserir
@@ -169,7 +169,7 @@ static int RemovePosicao(t_lista *lista, t_apontador P) {
 }
 ```
 
-**VI) Reinicializarção da lista**
+**VI) Reinicialização da lista**
 
 ```
 void reinicializarLista(LISTA * l) {
