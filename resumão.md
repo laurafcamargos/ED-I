@@ -636,7 +636,6 @@ int tamanho (t_lista *lista) {
 #### Pilhas
 
 - São especializações de listas em que as inserções e remoções são feitas na mesma extremidade, chamada TOPO
-- 
 - LIFO (Last In, First Out == o último elemento a entrar é o primeiro a sair)
 - A ordem da retirada dos elementos é inversa ao da entrada
 - O *TOPO* indica o último elemento inserido
