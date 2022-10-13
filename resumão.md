@@ -128,7 +128,6 @@ t_apontador PesquisaLista(t_lista *lista, t_chave chave) {
 	return NAO_ENCONTROU;
 }
 ```
-```
 
 B) Busca binária = O(log n) - só serve quando os **elementos estão ordenados**
 
@@ -152,6 +151,7 @@ int InsereLista(t_lista *lista, t_elemento elemento) {
 **V) Exclusão- O(n),pois a busca binária não funciona**
 - verifica se o elemento existe na chave passada pelo usuário
 - se houver: excluir o elemento e desloca todos os outros posteriores para uma posição para a esquerda e diminui em um o numero de elementos;
+
 ```
 int RemoveLista(t_lista *lista, t_chave chave) {
 	RemovePosicao(lista, PesquisaLista(lista, chave));
@@ -170,6 +170,7 @@ static int RemovePosicao(t_lista *lista, t_apontador P) {
 ```
 
 **VI) Reinicializarção da lista**
+
 ```
 void reinicializarLista(LISTA * l) {
 	l->numeroDeElementos = 0;
@@ -212,6 +213,7 @@ int buscaBinaria(LISTA * l, TIPICHAVE ch) {
 	return -1;
 }
 ```
+
 **Remoção- O(n + logn)**
 
 **Obs.: embora a busca na exclusão fique mais eficiente com a busca binária, ainda num vetor ordenado, os elementos devem ser deslocado a fim de ocupar o espaço deixado pelo elemento excluído, não reduzindo a complexidade total do algoritmo**
