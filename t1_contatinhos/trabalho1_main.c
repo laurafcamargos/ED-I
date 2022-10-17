@@ -22,7 +22,7 @@ int main()
   char opcao = '1';
   int qntdOperacao = 0;
   criar(&l);
-  while (opcao != 0 && qntdOperacao < 109)
+  while (opcao != 0)
   {
 
     if (scanf(" %c", &opcao) == 1)
