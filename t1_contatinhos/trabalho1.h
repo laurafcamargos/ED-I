@@ -15,7 +15,7 @@ typedef struct
   long int numero;
 } t_elemento;
 
-//estrtura do apontado que percorre os nós
+//estrtura do apontador que percorre os nós
 typedef struct t_no *t_apontador;
 
 //estrutura do tipo nó
