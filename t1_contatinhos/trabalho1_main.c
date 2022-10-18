@@ -30,6 +30,7 @@ int main()
 
       if (opcao == '0')
       {
+        //esse if libera os nós da lista e é o parâmetro de parada do scanf
         P = l.primeiro;
         while (P != NULL)
         {
@@ -43,26 +44,27 @@ int main()
     switch (opcao)
     {
 
-    case 'I': // inserir
+    case 'I': //inserir
 
-      if (scanf("%s", e.nome) == 1)
-      { // nao usa & por causa que é string
+      if (scanf("%s", e.nome) == 1)//o ==1 garante que a leitura do usuário é sempre verdadeira
+      //e evita possíveis erros na leitura
+      { 
         if (scanf("%ld", &e.numero) == 1)
           inserir(&l, e);
       }
       break;
-    case 'R': // remover
-      if (scanf("%s", e.nome) == 1)
+    case 'R': //remover
+      if (scanf("%s", e.nome) == 1)//não usa & devido ao uso de string
         remover(&l, e.nome);
       break;
-    case 'A': // alterar
+    case 'A': //alterar
       if (scanf("%s", e.nome) == 1)
       {
         if (scanf("%ld", &e.numero) == 1)
           alterar(&l, e);
       }
       break;
-    case 'P': // pesquisar
+    case 'P': //pesquisar
       if (scanf("%s", e.nome) == 1)
         pesquisar(&l, e.nome);
 
