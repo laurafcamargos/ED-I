@@ -106,9 +106,9 @@ int desempilhar(t_lista *lista, t_elemento elemento) {
 int vazia_pilha(t_lista *lista) {
   //função que verifica se a pilha está vazia ou não 
   if (lista->topo == NULL) {
-    return 1; //está vazia
+    return 1;//está vazia
   } else
-    return 0; //não está vazia
+    return 0;//não está vazia
 }
 
 
