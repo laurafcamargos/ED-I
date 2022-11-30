@@ -81,7 +81,7 @@ garantias em relação ao balanceamento.
 - Qual o pior caso? Quando nossa árvore binária se torna uma **árvore degenerada**: quando todos os seus nós têm apenas uma única sub-árvore associada(desbalanceada).
 - Por que é importante balancear a árvore? Porque se evita o pior caso das operações O(n) e garante o O(logn). A solução é manter a **árvore balanceada por meio de rotações**.
 
-![Arvore Degenerada](https://img.vivaolinux.com.br/imagens/artigos/comunidade/ArvoresBinarias_intro3_degen.png)
+![Arvore Degenerada](https://pythonhelp.files.wordpress.com/2015/01/image09.png)
 
 ## Rotações:
 
