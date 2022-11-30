@@ -125,6 +125,7 @@ garantias em relação ao balanceamento.
 							printf("%d ",(*abb)->elemento.chave);
 					}
 ```
+```
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
 
 ![Operacao arvore](https://www.researchgate.net/profile/Leandro-De-Castro/publication/261437902/figure/fig1/AS:392536632905730@1470599434321/Figura-I-Arvore-de-programacao-genetica-representando-a-expressao-simbolica-AB.png)
@@ -146,7 +147,7 @@ garantias em relação ao balanceamento.
 - O balanceamento pode ser entendido como sinônimo de equilibrado.
 - O objetivo é manter as subárvores da esquerda e direita com a menor diferença possível.
 - 
-```
+
 
 typedef int t_chave;
 typedef int t_apontador;
