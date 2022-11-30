@@ -18,11 +18,11 @@
 	- **Altura de um nó r**: é o comprimento do caminho mais longo de r a algum nó folha (de suas subárvores). Ex: a altura da árvore é a altura do nó raiz, das folhas é 0.
 
 - **Tipos de dados**:
-    - t_nó: contém o elemento e os apontadores para os filhos esquerda ou direita.
-    - t_apontador: ponteiro do tipo nó.
-	- t_chave: inteiro que serve de identificação do elemento.
-	- t_elemento: struct que contém a chave de identificação e outros campos de informação.
-	- t_ab: é uma variável do tipo apontador, sempre que manipulado usar (*ab)->elemento = elemento, por exemplo.
+    - **t_nó**: contém o elemento e os apontadores para os filhos esquerda ou direita.
+    - **t_apontador**: ponteiro do tipo nó.
+	- **t_chave**: inteiro que serve de identificação do elemento.
+	- **t_elemento**: struct que contém a chave de identificação e outros campos de informação.
+	- **t_ab**: é uma variável do tipo apontador, sempre que manipulado usar (*ab)->elemento = elemento, por exemplo.
 
 - Estrutura de uma AB:
 ```
@@ -50,11 +50,53 @@ typedef t_apontador t_abb;
 - retorna um tipo \*void
 - para transformá-lo, utiliza-se o "casting" (ex.: int * x = **(int * )** malloc(sizeof(int));)
 
-## Operações Básicas
+## Operações Básicas na ABB
 
-- Cria árvore;
-- Cria raiz;
-- Insere esquerda ou direita;
+- **Cria árvore**:
+```
+int criar(t_abb *abb) {
+	// ideal seria limpar caso houvesse algo
+	*abb = NULL;
+}
+```
+
+- **Cria raiz**: 
+```
+int static criar_raiz(t_abb *abb, t_elemento elemento){
+	*abb = (t_abb) malloc(sizeof(t_no));
+	if (*abb == NULL)
+		return ERRO_CHEIA;
+	
+	(*abb)->esq = NULL;
+	(*abb)->dir = NULL;
+	(*abb)->elemento = elemento;
+
+	return SUCESSO;
+}
+```
+- **Insere esquerda ou direita**:
+```
+int inserir(t_abb *abb, t_elemento elemento) {
+	
+	if ((*abb) == NULL) {
+		return criar_raiz(abb, elemento);
+	}
+
+	//considerar chaves primárias
+	if ((*abb)->elemento.chave == elemento.chave) { 
+		printf("elemento ja inserido\n");
+		return JA_EXISTE; 
+	} else {
+
+		if (elemento.chave < (*abb)->elemento.chave) {
+			return inserir(&(*abb)->esq, elemento);
+		} else {
+			return inserir(&(*abb)->dir, elemento);
+		}
+	}
+}
+```
+
 - **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
 - Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
 
@@ -144,6 +186,35 @@ garantias em relação ao balanceamento.
 
 - A altura das subárvores de cada nó pode se diferenciar em, no máximo, 1. Caso contrário, fazemos rotações para a esquerda ou direita, a fim de rebalancear a árvore.
 
+
+## Rotações:
+
+- **Rotação à direita**: a árvore vai estar "esticada para a esquerda" 
+
+- **Rotação à esquerda**: a árvore vai estar "esticada para a direita" 
+
+- **Rotação dupla à direita(ou esquerda-direita)**:
+
+- **Rotação dupla à esquerda(ou direita-esquerda)**:
+
+-**Situações podem causar desbalanceamento**: lembrando que para manter uma árvore balanceada, é necessário fazer rotações nela, de modo que, o percurso em ordem da árvore antes e depois da
+transformação seja igual (ou seja, continue sendo uma ABB) e o |fb| <= 1.
+
+	- Nó inserido em descendente esquerdo de nó com Fb = 1.
+	- Nó inserido em descendente direito de nó com Fb = -1.
+
+- Como eu sei quando e qual rotação eu devo fazer? 
+	- Para saber quando a árvore está balanceada, é só descobrir o **fator de balanceamento**.
+	- Se fator de desbalanceamento for positivo (+2 no pai e +1 ou 0 no filho à esquerda), **rotacionar à direita**.
+	- Se fator de desbalanceamento for negativo (-2 no pai e -1 ou 0 no filho à direita), **rotacionar à esquerda**.
+	- Se misturar positivo e negativo (+2 no pai e -1 no filho à esquerda ou -2 no pai e +1 no filho à direita), **rotacionar duplamente**.
+
+### Rotação simples ou dupla?
+
+- Balanceamento positivo/negativo: rotação simples.
+- Balanceamento “misto”: rotação dupla.
+- Visualmente falando, se olharmos para os nós envolvidos no desbalanceamento, veremos uma reta (rotação simples) ou um “joelho” (rotação dupla).
+
 - Estrutura de uma AVL:
 ```
 typedef int t_chave;
@@ -161,151 +232,43 @@ typedef struct t_no {
 } t_no;
 
 typedef t_apontador t_avl;
-
 ```
 
-## Rotações:
 
-- **Rotação à direita**: a árvore vai estar "esticada para a esquerda" 
+## Operações Básicas na ABB
 
-- **Rotação à esquerda**: a árvore vai estar "esticada para a direita" 
+- **Inserção nas “partes internas” ou “externas”**:
+	- Externa (subárvore direita do filho à direita ou subárvore esquerda do filho à esquerda): **simples**.
+	-  Interna (subárvore direita do filho à esquerda ousubárvore esquerda do filho à direita): **dupla**.
+- **Remoção**: lembrando que qualquer remoção pode diminuir a altura de uma subárvore (causar desbalanceamento). Portanto, devemos fazer o retrace da folha (que foi removida) até a raiz revendo o rebalanceamento. É possível que seja necessário fazer várias rotações até a raiz.
 
-- **Rotação dupla à direita(ou esquerda-direita)**:
 
-- **Rotação dupla à esquerda(ou direita-esquerda)**:
 
-- Como eu sei quando e qual rotação eu devo fazer?
-- **funções comuns:**
-	- inicializar a estrutura
-	- quantidade de elementos
-	- exibir elemento
-	- buscar elementos
-	- inserir
-	- excluir
-	- reiniciar
 
-**I) Inicialização**
 ```
 void CriaLista(t_lista *lista) {
 	lista->ultimo = -1;
 }
 ```
 
-**II) Exibir Lista**
-```
-void ImprimeLista(t_lista *lista)  {
-        t_apontador i;
-	printf("Lista:");
-        for (i=0; i <= lista->ultimo; i++) {
-                printf(" %d", lista->elemento[i].chave);
-        }
-	printf("\n\n");
-}
-```
 
-**III) Buscar elemento**
 
-A) Busca sequencial = O(n)
 
-```
-t_apontador PesquisaLista(t_lista *lista, t_chave chave) {
-	t_apontador i;
-	for (i=0; i <= lista->ultimo; i++) {
-		if (lista->elemento[i].chave == chave)
-			return i;
-	}
-	return NAO_ENCONTROU;
-}
-```
 
-B) Busca binária = O(log n) - só serve quando os **elementos estão ordenados**
 
-**IV) Inserir elemento- O(1) na não ordenada**
 
-- lista não estiver cheia e índice passado pelo usuário for válido: desloca todos os elementos posteriores uma posição a direita; insere o elemento; soma um no numero de elementos;
-```
-int InsereLista(t_lista *lista, t_elemento elemento) {
 
-	if (ListaCheia(lista)) {
-		printf("Deu ruim... tá lotado!\n");
-		return LISTA_CHEIA;
-	}
 
-	lista->ultimo++;
-	lista->elemento[lista->ultimo] = elemento;
 
-}
-```
 
-**V) Exclusão- O(n),pois a busca binária não funciona**
-- verifica se o elemento existe na chave passada pelo usuário
-- se houver: excluir o elemento e desloca todos os outros posteriores para uma posição para a esquerda e diminui em um o numero de elementos;
 
-```
-int RemoveLista(t_lista *lista, t_chave chave) {
-	RemovePosicao(lista, PesquisaLista(lista, chave));
-}
 
-static int RemovePosicao(t_lista *lista, t_apontador P) {
-	t_apontador i;
-	if (P < 0 || P > lista->ultimo) {
-		printf("Posicao invalida\n");
-		return POS_INVALIDA;
-	}
-	for (i = P; i < lista->ultimo; i++)
-		lista->elemento[i] = lista->elemento[i+1];
-	lista->ultimo--;
-}
-```
 
-**VI) Reinicialização da lista**
 
-```
-void reinicializarLista(LISTA * l) {
-	l->numeroDeElementos = 0;
-}
-```
 
-##### Listas Sequenciais Ordenadas
 
-**Inserção- O(n + logn)**
 
-```
-bool inserirElementoListaOrdenada(LISTA * l, REGISTRO r) {
-	if(l->numeroDeElementos >= MAX) return false;
-	int pos = l->numeroDeElementos;
-	while(pos > 0 && l->A[pos-1].chave > r.chave) {
-		l->A[pos] = l->A[pos-1];
-		pos--;
-	}
-	l->A[pos] = r;
-	l->numeroElemento++;
-}
-```
 
-**Busca Binária - O(log n)**
-```
-int buscaBinaria(LISTA * l, TIPICHAVE ch) {
-	int esq, dir, meio;
-	esq = 0; // primeira posicao olhada
-	dir = l->numeroDeElementos-1; // ultima posicao olhada
-	while(esq <= dir) {
-		meio = ((esq+dir)/2);
-		if(l->A[meio].chave == ch)
-			return meio; // se o elemento do meio for o elemento buscado, retorna
-		else {
-			if(l->A[meio].chave < ch)
-				esq = meio + 1;
-			else dir = meio + 1;
-		}
-	}
-	return -1;
-}
-```
-
-**Remoção- O(n + logn)**
-
-**Obs.: embora a busca na exclusão fique mais eficiente com a busca binária, ainda num vetor ordenado, os elementos devem ser deslocado a fim de ocupar o espaço deixado pelo elemento excluído, não reduzindo a complexidade total do algoritmo**
 
 
 ### Lista Ligada (linked list) (implementação dinâmica)
