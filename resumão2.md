@@ -58,7 +58,7 @@ typedef t_apontador t_abb;
 - **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
 - Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
 
-### Árvores Binárias de Busca(ABB)
+## Árvores Binárias de Busca(ABB)
 
 - **Características**: é uma estrutura que implementa a TS com as operações:
 	- **Busca**: encontrar se uma chave existe e retornar seu valor, caso exista.
@@ -130,7 +130,7 @@ garantias em relação ao balanceamento.
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
 -colocar imagem
 
-#### Árvores AVL (ABB Balanceada)
+## Árvores AVL (ABB Balanceada)
 
 - O balanceamento pode ser entendido como sinônimo de equilibrado.
 
