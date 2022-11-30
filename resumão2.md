@@ -84,9 +84,9 @@ garantias em relação ao balanceamento.
 ![Arvore Degenerada](https://pythonhelp.files.wordpress.com/2015/01/image09.png)
 
 <img source = "https://pythonhelp.files.wordpress.com/2015/01/image09.png"
-width = "100px"/>
+width = "50px"/>
 <img source = "https://pythonhelp.files.wordpress.com/2015/01/image09.png"
-height = "200px"/>
+height = "50px"/>
 
 ## Rotações:
 
