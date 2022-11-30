@@ -11,15 +11,18 @@
 	- os filhos de um nó são chamados filhos esquerdo e direito.
 
 - **Conceitos gerais**:
-	- *Nó Raiz*: não possui ancestrais, só pode ter filhos.
-    - *Nó Folha*: não tem filhos (ou melhor, seus filhos são estruturas vazias).
-    - *Grau*: é o número de sub-árvores que o nó possui(Ex: um nó folha ou terminal é aquele que possui grau 0).
-	- *Nível ou profundidade de um nó r*: é o comprimento do caminho entre a raiz e r(Ex: a raiz está no nível 0). 
-	- *Altura de um nó r*: é o comprimento do caminho mais longo de r a algum nó folha (de suas subárvores).Ex: a altura da árvore é a altura do nó raiz, das folhas é 0.
+	- **Nó Raiz**: não possui ancestrais, só pode ter filhos.
+    - **Nó Folha**: não tem filhos (ou melhor, seus filhos são estruturas vazias).
+    - **Grau**: é o número de sub-árvores que o nó possui (Ex: um nó folha ou terminal é aquele que possui grau 0).
+	- **Nível ou profundidade de um nó r**: é o comprimento do caminho entre a raiz e r (Ex: a raiz está no nível 0). 
+	- **Altura de um nó r**: é o comprimento do caminho mais longo de r a algum nó folha (de suas subárvores). Ex: a altura da árvore é a altura do nó raiz, das folhas é 0.
 
 - **Tipos de dados**:
-    - Nó: elemento que contém a informação e os apontadores para esquerda e direita.
-    - 
+    - t_nó: contém o elemento e os apontadores para os filhos esquerda ou direita.
+    - t_apontador: ponteiro do tipo nó.
+	- t_chave: inteiro que serve de identificação do elemento.
+	- t_elemento: struct que contém a chave de identificação e outros campos de informação.
+	- t_ab: é uma variável do tipo apontador, sempre que manipulado usar (*ab)->elemento = elemento, por exemplo.
 
 ```
 typedef int t_chave;
@@ -36,7 +39,8 @@ typedef struct t_no {
 } t_no;
 typedef t_apontador t_abb;
 ```
-- para acessar cada elemento dentro da struct:
+
+- Para acessar cada elemento dentro da struct:
 	- Nome.Elemento1 ou Nome -> Elemento1 (caso for ponteiro)
 	- caso ponteiro, utiliza-se a função **malloc**
 
@@ -50,7 +54,7 @@ typedef t_apontador t_abb;
 - Cria árvore;
 - Cria raiz;
 - Insere esquerda ou direita;
-- *Qual é a complexidade das operações de uma AB?*: a busca, inserção e remoção são O(n). 
+- **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
 - Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
 
 ### Árvores Binárias de Busca(ABB)
@@ -72,14 +76,22 @@ typedef t_apontador t_abb;
 
 - **Complexidade das operações**: no pior caso, todas as operações de uma ABB consomem tempo proporcional à altura da árvore - O(n). No melhor caso, a complexidade é O(log n).
 
-- **Conclusão**: a eficiência das operações numa ABB depende da profundidade dos nós folha, e tal profundidade depende do seu *balanceamento*. Os  algoritmos de inserção e remoção não possuem
+- **Conclusão**: a eficiência das operações numa ABB depende da profundidade dos nós folha, e tal profundidade depende do seu **balanceamento**. Os  algoritmos de inserção e remoção não possuem
 garantias em relação ao balanceamento.
-- Qual o pior caso? Quando nossa árvore binária se torna uma *árvore degenerada*: quando todos os seus nós têm apenas uma única sub-árvore associada(desbalanceada).
-- Por que é importante balancear a árvore? Porque se evita o pior caso das operações O(n) e garante o O(logn). A solução é manter a *árvore balanceada por meio de rotações*.
+- Qual o pior caso? Quando nossa árvore binária se torna uma **árvore degenerada**: quando todos os seus nós têm apenas uma única sub-árvore associada(desbalanceada).
+- Por que é importante balancear a árvore? Porque se evita o pior caso das operações O(n) e garante o O(logn). A solução é manter a **árvore balanceada por meio de rotações**.
 
 ## Rotações:
 
 - **Rotação à direita**: 
+
+- **Rotação à esquerda**: 
+
+- **Rotação dupla à direita(ou esquerda-direita)**:
+
+- **Rotação dupla à esquerda(ou direita-esquerda)**:
+
+- Como eu sei quando e qual rotação eu devo fazer?
 
 #### Árvores AVL (ABB Balanceada)
 
