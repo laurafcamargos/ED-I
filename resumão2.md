@@ -128,7 +128,7 @@ garantias em relação ao balanceamento.
 ```
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
 
-![Operacao arvore](file:///home/boleira/Imagens/Capturas%20de%20tela/Captura%20de%20tela%20de%202022-11-30%2011-26-59.png)
+![Operacao arvore](https://www.researchgate.net/profile/Leandro-De-Castro/publication/261437902/figure/fig1/AS:392536632905730@1470599434321/Figura-I-Arvore-de-programacao-genetica-representando-a-expressao-simbolica-AB.png)
 
 ## Rotações:
 
