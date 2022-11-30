@@ -6,7 +6,6 @@ static int max(int a, int b) {
 	return a > b ? a : b; 
 }
 
-
 static void rotacao_esq(t_avl *avl) {
 
 	t_apontador j, B;
@@ -21,11 +20,9 @@ static void rotacao_esq(t_avl *avl) {
 	// aux passa a ser a raiz
 	j = (*avl);
 
-	(*avl)->alt = max(retornar_altura(&(*avl)->esq),
-						retornar_altura(&(*avl)->dir)) + 1;
+	(*avl)->alt = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
 
-	j->alt = max(retornar_altura(&j->esq),
-						retornar_altura(&j->dir)) + 1;
+	j->alt = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
 
 	// mudar o ponteiro "de cima"
 	*avl = j;
@@ -46,11 +43,9 @@ static void rotacao_dir(t_avl *avl) {
 	// aux passa a ser a raiz
 	j = (*avl);
 
-	(*avl)->alt = max(retornar_altura(&(*avl)->esq),
-						retornar_altura(&(*avl)->dir)) + 1;
+	(*avl)->alt = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
 
-	j->alt = max(retornar_altura(&j->esq),
-						retornar_altura(&j->dir)) + 1;
+	j->alt = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
 
 	// mudar o ponteiro "de cima"
 	*avl = j;
@@ -63,7 +58,6 @@ static void rotacao_dir_esq(t_avl *avl) {
 	rotacao_dir(&(*avl)->dir);
 	//rotacionar à esquerda
 	rotacao_esq(avl);
-
 }
 
 static void rotacao_esq_dir(t_avl *avl) {
@@ -104,8 +98,7 @@ int checar_fb(t_avl *avl) {
     if ((*avl) == NULL)
         return 0;
     else 
-        return retornar_altura(&(*avl)->esq) - 
-    			retornar_altura(&(*avl)->dir);
+        return retornar_altura(&(*avl)->esq) - retornar_altura(&(*avl)->dir);
 }
 
 int inserir(t_avl *avl, t_elemento elemento) {
@@ -164,8 +157,6 @@ int inserir(t_avl *avl, t_elemento elemento) {
     return SUCESSO;
 
 }
-
-
 
 
 t_elemento pesquisar(t_avl *avl, t_chave chave) {
@@ -236,11 +227,11 @@ int remover(t_avl *avl, t_chave chave) {
 		p = *avl;
 		*avl = (*avl)->dir;
 		free(p);
-	} else if ((*avl)->dir==NULL) { //caso 2 (esq)
+	} else if ((*avl)->dir==NULL) { //caso 3 (esq)
 		p = *avl;
 		*avl = (*avl)->esq;
 		free(p);
-	} else { //caso 3
+	} else { //caso 4
 		buscaMaiorEsqETroca(avl, &(*avl)->esq);
 	}
 

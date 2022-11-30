@@ -3,8 +3,8 @@
 
 #define JA_EXISTE -2
 #define NAO_ENCONTROU -1
-#define ERRO_CHEIA 0
-#define SUCESSO 1
+#define ERRO_CHEIA 1
+#define SUCESSO 0
 
 typedef int t_chave;
 
@@ -26,6 +26,8 @@ int criar(t_abb *abb);
 int inserir(t_abb *abb, t_elemento elemento);
 t_elemento pesquisar(t_abb *abb, t_chave chave);
 int remover(t_abb *abb, t_chave chave);
+void imprime(t_abb *abb);
+int altura(t_abb *abb);
 
 #endif
 

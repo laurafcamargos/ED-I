@@ -31,15 +31,18 @@ int main() {
     inserir(&raiz, e);
     e.chave = 14;
     inserir(&raiz, e);
-    
-
-    pesquisar(&raiz, 10);    
+    imprime(&raiz);
+    printf("\n"); 
+    int h = altura(&raiz);
+    printf("a altura da arvore é %d\n",h);
+    recebe = pesquisar(&raiz, 10);
+    printf("%d\n",recebe.chave);    
     pesquisar(&raiz, 9);
     remover(&raiz, 10);
-    pesquisar(&raiz, 10);
+    recebe = pesquisar(&raiz, 10);
+    printf("%d\n",recebe.chave);
     pesquisar(&raiz, 9);
-
- //	imprimir(&l);
+    
 	
 	return 0;
 }
