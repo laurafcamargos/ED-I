@@ -83,10 +83,46 @@ garantias em relação ao balanceamento.
 
 ![Arvore Degenerada](https://pythonhelp.files.wordpress.com/2015/01/image09.png)
 
-<img source = "https://pythonhelp.files.wordpress.com/2015/01/image09.png"
-width = "50px"/>
-<img source = "https://pythonhelp.files.wordpress.com/2015/01/image09.png"
-height = "50px"/>
+## Percusos na ABB:
+- **Operações para percorrer uma AB visitando cada nó uma única vez**: visitar pode significar qualquer tipo de operação feita no nó (imprimir, modificar seu valor, etc). 
+```
+void visita (t_abb *abb){ 
+	printf("%d ",(*abb)->elemento.chave);
+}
+```
+	- Um percurso gera uma sequência linear de nós visitados (agora existe o conceito de sucessor e predecessor de um nó). Logo, diferentes percursos podem ser realizados, dependendo da aplicação.
+
+- **3 percursos comuns para ABs podem ser feitos com o mesmo algoritmo base**: diferença básica está na ordem em que os nós são visitados. Percorre-se a AB recursivamente:
+	- Pré-ordem (pre-order): visita o nó ***antes** de acessar qualquer um dos seus filhos.
+					```
+					void visita (t_abb *abb){ 
+						if((*abb) != NULL) {
+							printf("%d ",(*abb)->elemento.chave);
+							visita(&(*abb)->esq);
+							visita(&(*abb)->dir);
+					}
+					```
+	- Em-ordem (in-order): visita o nó **entre** o acesso a cada um de seus dois filhos.
+					```
+					void visita (t_abb *abb){ 
+						if((*abb) != NULL) {
+							visita(&(*abb)->esq);
+							printf("%d ",(*abb)->elemento.chave);
+							visita(&(*abb)->dir);
+					}
+					```
+	- Pós-ordem (post-order): visita o nó somente **depois** de acessar seus filhos.
+					```
+					void visita (t_abb *abb){ 
+						if((*abb) != NULL) {
+							visita(&(*abb)->esq);
+							visita(&(*abb)->dir);
+							printf("%d ",(*abb)->elemento.chave);
+					}
+					```
+- **Aplicações**: representar uma expressão em uma árvore binária. Ex: (a + b) * (c - d) -> a b + c d - * > notação pós-fixa mais fácil.
+
+![op](file:///home/boleira/Imagens/Capturas%20de%20tela/Captura%20de%20tela%20de%202022-11-30%2011-26-59.png)
 
 ## Rotações:
 
