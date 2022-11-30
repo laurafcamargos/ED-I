@@ -86,8 +86,8 @@ garantias em relação ao balanceamento.
 ## Percusos na ABB:
 - **Operações para percorrer uma AB visitando cada nó uma única vez**: visitar pode significar qualquer tipo de operação feita no nó (imprimir, modificar seu valor, etc). 
 ```
-void visita (t_abb *abb){ 
-	printf("%d ",(*abb)->elemento.chave);
+					void visita (t_abb *abb){ 
+						printf("%d ",(*abb)->elemento.chave);
 }
 ```
 
