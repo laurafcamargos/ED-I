@@ -157,7 +157,7 @@ garantias em relação ao balanceamento.
 				}
 			}	
 ```
-	- Pós-ordem (post-order): visita o nó somente **depois** de acessar seus filhos:
+- Pós-ordem (post-order): visita o nó somente **depois** de acessar seus filhos:
 ```
 			void visita (t_abb *abb){ 
 				if((*abb) != NULL) {
@@ -177,7 +177,7 @@ garantias em relação ao balanceamento.
 
 - O objetivo é manter as subárvores da esquerda e direita com a menor diferença possível.
 
-- Todo nó da árvore possui um **fator de balanceamento(fb)**.
+- Todo nó da árvore possui um **fator de balanceamento (fb)**.
 
 - O fb é a diferença entre a altura da subárvore da esquerda e da direita: **fb = hEsq - hDir**.
 	
@@ -196,11 +196,11 @@ garantias em relação ao balanceamento.
 
 - **Rotação dupla à esquerda(ou direita-esquerda)**:
 
--**Situações podem causar desbalanceamento**: lembrando que para manter uma árvore balanceada, é necessário fazer rotações nela, de modo que, o percurso em ordem da árvore antes e depois da
-transformação seja igual (ou seja, continue sendo uma ABB) e o |fb| <= 1.
-
+-**Situações podem causar desbalanceamento**: 
 	- Nó inserido em descendente esquerdo de nó com Fb = 1.
 	- Nó inserido em descendente direito de nó com Fb = -1.
+
+- Lembrando que para manter uma árvore balanceada, é necessário fazer rotações nela, de modo que, o percurso em ordem da árvore antes e depois da transformação seja igual (ou seja, continue sendo uma ABB) e o |fb| <= 1.
 
 - Como eu sei quando e qual rotação eu devo fazer? 
 	- Para saber quando a árvore está balanceada, é só descobrir o **fator de balanceamento**.
