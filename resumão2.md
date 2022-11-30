@@ -73,20 +73,19 @@ int static criar_raiz(t_abb *abb, t_elemento elemento){
 	return SUCESSO;
 }
 ```
-- Inserção, remoção e busca, etc.
+- **Inserção, remoção e busca, etc**.
 
-- **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
+- **Qual é a complexidade das operações de uma AB?** a busca, inserção e remoção são O(n). 
 - Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
 
-# Árvores Binárias de Busca(ABB)
+# Árvores Binárias de Busca (ABB)
 
 - **Características**: é uma estrutura que implementa a TS com as operações:
 	- **Busca**: encontrar se uma chave existe e retornar seu valor, caso exista.
 	- Encontrar o maior, o menor e/ou o k-ésimo elemento. 
 	- Inserção, remoção, alteração, etc.
-	- As chaves de uma ABB precisam ser comparáveis.
 
-- **Busca**: Para todos os nós da árvore, os nós na sub-árvore esquerda possuem chave menor ou igual que o nó raiz. Para a direita, chave maior. O processo é muito parecido com a busca binária em um vetor ordenado.
+- **Busca**: Para todos os nós da árvore, os nós na sub-árvore esquerda possuem chave menor ou igual que o nó raiz. Para a direita, chave maior. O processo é muito parecido com a busca binária em um vetor ordenado (as chaves de uma ABB precisam ser comparáveis).
 ```
 t_elemento pesquisar(t_abb *abb, t_chave chave) {
 
@@ -199,7 +198,7 @@ garantias em relação ao balanceamento.
 
 ![Arvore Degenerada](https://pythonhelp.files.wordpress.com/2015/01/image09.png)
 
-## Percusos na ABB:
+## Percursos na ABB:
 - **Operações para percorrer uma AB visitando cada nó uma única vez**: visitar pode significar qualquer tipo de operação feita no nó (imprimir, modificar seu valor, etc). 
 ```
 					void visita (t_abb *abb){ 
@@ -254,21 +253,82 @@ garantias em relação ao balanceamento.
 
 - O fb é a diferença entre a altura da subárvore da esquerda e da direita: **fb = hEsq - hDir**.
 	
-- O fb de qualquer nó é sempre -1,0,1.
+- O fb de qualquer nó deve ser sempre -1,0,1.
 
 - A altura das subárvores de cada nó pode se diferenciar em, no máximo, 1. Caso contrário, fazemos rotações para a esquerda ou direita, a fim de rebalancear a árvore.
 
 
 ## Rotações:
 
-- **Rotação à direita**: a árvore vai estar "esticada para a esquerda" 
+- Como eu sei quando e qual rotação eu devo fazer?
 
-- **Rotação à esquerda**: a árvore vai estar "esticada para a direita" 
+- **Rotação à direita**: a árvore vai estar "esticada para a esquerda" e se o fator de desbalanceamento for positivo (+2 no pai e +1 ou 0 no filho à esquerda).
+```
+static void rotacao_dir(t_avl *avl) {
 
-- **Rotação dupla à direita(ou esquerda-direita)**:
+	t_apontador j, B;
 
-- **Rotação dupla à esquerda(ou direita-esquerda)**:
+	// filho à dir da raiz
+	j = (*avl)->dir;
+	// filho à dir à esq da raiz
+	B = j->esq;
 
+	// a sub-arv muda de pai pela antiga raiz
+	(*avl)->dir = B;
+	// aux passa a ser a raiz
+	j = (*avl);
+
+	(*avl)->altura = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
+
+	j->altura = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
+
+	// mudar o ponteiro "de cima"
+	*avl = j;
+}
+```
+- **Rotação à esquerda**: a árvore vai estar "esticada para a direita" e se o fator de desbalanceamento for negativo (-2 no pai e -1 ou 0 no filho à direita).
+```
+static void rotacao_esq(t_avl *avl) {
+
+	t_apontador j, B;
+
+	// filho à esq da raiz
+	j = (*avl)->esq;
+	// filho à esq à dir da raiz
+	B = j->dir;
+
+	// a sub-arv muda de pai pela antiga raiz
+	(*avl)->esq = B;
+	// aux passa a ser a raiz
+	j = (*avl);
+
+	(*avl)->altura = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
+
+	j->altura = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
+
+	// mudar o ponteiro "de cima"
+	*avl = j;
+}
+```
+- **Rotação dupla à direita(ou esquerda-direita)**: se o fator de desbalanceamento misturar positivo e negativo (+2 no pai e -1 no filho à esquerda).
+```
+static void rotacao_esq_dir(t_avl *avl) {
+
+	rotacao_esq(&(*avl)->esq);
+	rotacao_dir(avl);
+
+}
+```
+- **Rotação dupla à esquerda(ou direita-esquerda)**: se o fator de desbalanceamento misturar positivo e negativo (-2 no pai e +1 no filho à direita).
+```
+static void rotacao_dir_esq(t_avl *avl) {
+
+	//rotacionar à direita
+	rotacao_dir(&(*avl)->dir);
+	//rotacionar à esquerda
+	rotacao_esq(avl);
+}
+```
 - **Situações podem causar desbalanceamento**: 
 
 	- Nó inserido em descendente esquerdo de nó com Fb = 1.
@@ -276,11 +336,6 @@ garantias em relação ao balanceamento.
 
 - Lembrando que para manter uma árvore balanceada, é necessário fazer rotações nela, de modo que, o percurso em ordem da árvore antes e depois da transformação seja igual (ou seja, continue sendo uma ABB) e o |fb| <= 1.
 
-- Como eu sei quando e qual rotação eu devo fazer? 
-	- Para saber quando a árvore está balanceada, é só descobrir o **fator de balanceamento**.
-	- Se fator de desbalanceamento for positivo (+2 no pai e +1 ou 0 no filho à esquerda), **rotacionar à direita**.
-	- Se fator de desbalanceamento for negativo (-2 no pai e -1 ou 0 no filho à direita), **rotacionar à esquerda**.
-	- Se misturar positivo e negativo (+2 no pai e -1 no filho à esquerda ou -2 no pai e +1 no filho à direita), **rotacionar duplamente**.
 
 ### Rotação simples ou dupla?
 
@@ -307,7 +362,6 @@ typedef struct t_no {
 typedef t_apontador t_avl;
 ```
 
-
 ## Operações Básicas na AVL
 
 - **Inserção nas “partes internas” ou “externas”**:
@@ -315,662 +369,103 @@ typedef t_apontador t_avl;
 	-  Interna (subárvore direita do filho à esquerda ousubárvore esquerda do filho à direita): **dupla**.
 - **Remoção**: lembrando que qualquer remoção pode diminuir a altura de uma subárvore (causar desbalanceamento). Portanto, devemos fazer o retrace da folha (que foi removida) até a raiz revendo o rebalanceamento. É possível que seja necessário fazer várias rotações até a raiz.
 
-# Filas de Prioridade e Heaps
+# Filas de Prioridade
 
+## Conceito, Operações Principais e Implementação
 
-```
-void CriaLista(t_lista *lista) {
-	lista->ultimo = -1;
-}
-```
+- **Conceito**:
 
+	- São estruturas que armazenam itens contendo:
+		-Chave que define a prioridade;
+		- Outras informações;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Lista Ligada (linked list) (implementação dinâmica)
-
-#### Ideia geral
-
-- é uma "array" dinâmica
-- as operações de inserção e remoção são menos custosas
-- Um ponteiro para o primeiro elemento
-- cada elemento tem um ponteiro para indicar seu sucessor
-
-- **Complexidade**
-	- Busca: O(n)
-	- Inserção: O(1) na não ordenada
-	- Remoção: O(1) na não ordenada
-	- Espaço: O(n)
-
-- **desvantagens:**
-	- não suporta busca binária
-	- espaço extra na memória para o ponteiro
-
-#### Tipos
-
-- lista ligada simples (simple linked list)
-- lista duplamente ligada (double linked list)
-- lista ligada circular (circular linked list)
-- A complexidade dos 3 tipos de listas dinâmicas é igual!
-
-#### Modelagem
-
-- **representação:**
-	- um ponteiro para o primeiro nó da lista
-	- o primeiro nó é chamado de cabeça (head)
-	- se a lista está vazia, então o valor do ponteiro da cabeça é nulo (null)
-	- cada nó da lista consiste em ao menos duas partes: data (int, string, etc...) e ponteiro (para o próximo nó ou um endereço para outro ponteiro)
-	- em C, um nó pode ser representado com structs
-```
-// a linked list node
-typedef struct t_no { 
-	t_elemento elemento; // informação
-	t_apontador proximo; // ponteiro para o proximo elemento da lista
-}t_no;
-```
-
-```
-#include<stdio.h>
-#include<stdlib.h> 
-
-typedef int t_chave;
-
-typedef struct {
-	t_chave chave;
-	//char nome[50];
-} t_elemento;
-
-typedef struct t_no *t_apontador;
-typedef struct t_no { //cada nó contém um objeto de determinado tipos e o endereço da célula seguinte
-	t_elemento elemento;
-	t_apontador proximo;
-} t_no;
-
-typedef struct {
-	t_apontador primeiro,ultimo;
-} t_lista;
-```
-
-**Criar/Inicializar Lista Dinâmica**
-```
-void criar(t_lista *lista) {
-	lista->primeiro = NULL;
-	lista->ultimo = NULL;
-}
-```
-
-**Imprimir Elementos**
-```
-void imprimir(t_lista *lista) {
-    t_apontador P = lista->primeiro; //p =Piliar
-	while(P != NULL) {
-		 printf("%d ",P->elemento.chave);
-		P = P->proximo;
-	}
-}
-```
-**Retornar o número de elemento**
-
-- percorrer o número de elementos
-
-```
-int tamanho(LISTA * l) {
-	PONT posicao = l->inicio;
-	int tam = 0;
-	while(posicao != NULL) {
-		tam++;
-		posicao = posicao->prox;
-	}
-	return tam;
-}
-```
-
-**Buscar elemento**
-
-- não suporta busca binária - busca sequencial - complexidade O(n)
-- recebe uma chave
-- retorna o endereço do elemento (se existir)
-- retorna null caso não encontre
-
-a) busca sequencial 
-
-```
-t_apontador pesquisar(t_lista *lista, t_chave chave) {
-
-	t_apontador P = lista->primeiro; 
-	if(P == NULL)
-		return NULL;
-	while(P != NULL) {
-		if (P->elemento.chave == chave)
-			return P;
-		P = P->proximo;
-	}
-	return P;
-}
-```
-
-b) busca em lista ordenada pelos valores das chaves dos registros
-
-```
-PONT buscaSeqOrd(LISTA * l, TIPOCHAVE ch) {
-	PONT posicao = l->inicio;
-	while(posicao != NULL && posicao->r.chave < ch) posicao = posicao->prox;
-	if(posicao != NULL && posicao->r.chave == ch) return posicao;
-	return NULL;
-}
-
-```
-
-**Inserção de um nó**
-
-- 3 maneiras:
-	- na frente da lista
-	- depois de um nó específico
-	- no final da lista
-
-- **Na frente**
-```
-// é preciso dar um ponteiro para um ponteiro (head_ref) para a cabeça da lista e um inteiro
-int inserir(t_lista *lista, t_elemento elemento) {
-	// alocação dinâmica do novo nó
-	t_apontador novo;
-	novo = (t_apontador) malloc(sizeof(t_no));
-	if (novo == NULL)
-		return ERRO_CHEIA;
-
-	// inserir dado
-	novo->elemento = elemento;
-
-	// fazer o ponteiro de proximo do novo nó ser a cabeça
-	novo->proximo = lista->primeiro;
-	lista->primeiro = novo;
-}
-```
-
-- **Depois de um dado nó**
-```
-void insertAfter(struct Node* prev_node, int new_data) {
-	// 1 - verificar se o nó dado aponta para NULL
-	if(prev_node == NULL)
-		printf("o nó anterior não pode ser nulo\n");
-		return;
-
-	// 2 - alocar o novo nó
-	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-	// 3 - inserir dado
-	new_node->data = new_data;
-
-	// fazer o "proximo" do novo nó ser o proximo do nó dado
-	new_node->next = prev_node->next;
-
-	// apontar o "proximo" do nó dado para o novo nó
-	prev_node->next = new_node;
-}
-```
-
-- **No final da lista**
-```
-void append(struct Node** head_ref, int new_data) {
-
-	// 1 alocar o novo nó
-	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-	// 2 criar um apontador para o último
-	struct Node * last = * head_ref;
-
-	// 3 atribuir valor do dado
-	new_node->data = new_data;
-
-	// 4 proximo do novo nó apontar para nulo
-	new_node->next = NULL;
-
-	// 5 se a lista estiver vazia, o novo_nó é também a cabeça (head)
-	if(*head_ref == NULL) {
-		*head_ref = new_node;
-		return;
-	}
-
-	// 6 se não estiver vazia, percorrer até o último nó
-	while(last->next != NULL)
-		last = last->next;
-
-	// 7 apontar o proximo do ultimo nó para o novo nó
-	last->next = new_node;
-	return;
-}
-```
-
-- inserção de ordenada pelo valor da chave
-- não se permitirá a inserção de elementos repetidos
-- é preciso identificar entre quais elementos o novo será inserido
-- é preciso alocar memória para o novo elemento
-- é preciso saber quem será o predecessor do elemento
-- função auxiliar
-
-```
-PONT buscaSequencialExc(LISTA * l, TIPOCHAVE ch, PONT * ant) {
-	*ant = null;
-	PONT atual = l->inicio;
-	while((atual != NULL) && (atual->r.chave < ch)) {
-		*ant = atual;
-		atual = atual->prox;
-	}
-	if((atual != NULL) && (atual->r.chave == ch))
-		return atual;
-	return NULL;
-}
-
-int inserirElementoListOrdenada(LISTA * l, REGISTRO r) {
-	TIPOCHAVE ch = r.chave;
-	PONT ant, i;
-	i = buscaSequencialExc(l, ch, &ant);
-	if(i != NULL) return false // significa que o elemento já existe na lista
-	i = (PONTO) malloc(sizeof(ELEMENTO));
-	i->r = r;
-	if(ant == NULL) {
-		i->prox = l->inicio;
-		i->inicio = i;
-	} else {
-		i->prox = ant->prox;
-		ant->prox = i;
-	}
-	return 1; // "true"
-}
-```
-
-**Remover elemento por posição**
-
-- passar a chave do elemento que se quer excluir
-
-```
-int remover(t_lista *lista, t_chave chave) {
-	t_apontador P = pesquisar(lista,chave);
-	int elemento = remove_posicao(lista,P);
-	if (elemento == POS_INVALIDA)
-	{
-		printf("Não foi possivel remover o %d!\n",chave);
-	}else printf("Sucesso, o %d foi removido!\n",chave);
-}
-
--Função auxiliar: 
-static int remove_posicao(t_lista *lista, t_apontador p) {
-	//lista vazia
-	if (p == NULL) {
-		return POS_INVALIDA;
-	}
-
-	// unico elemento
-	if (p == lista->primeiro && p == lista->ultimo) {
-		criar(lista);
-		free(p);
-		return SUCESSO;
-	}
-
-	// remove do inicio
-	if (p == lista->primeiro) {
-		lista->primeiro = lista->primeiro->proximo;
-		free(p);
-		return SUCESSO;
-	}
-
-	// remove do meio
-	t_apontador aux = lista->primeiro;//necessário criar o aux para nao perder a posição 
-	while(aux->proximo != NULL && aux->proximo != p) {
-		aux = aux->proximo;//passa a apontar pra prox posição
-	}
-
-	aux->proximo = p->proximo;//exemplo do a,b,c,tipo, vc aponta pro b com o aux, o b aponta pro c, o a prox = b prox, pois ele passa a apontar pro c, e dps da free no ponteiro do b 
-	// remove do fim
-	if (aux->proximo == NULL) {
-		lista->ultimo = aux;
-	}
-	free(p);
-	return SUCESSO;
-}
-
-```
-
-**Zerar a lista**
-
-- criar uma variável auxiliar antes de dar "free" no endereço
-- se fizer sem auxiliar, perde o conteúdo do endereço, incluíndo quais os proximos elementos da lista
-
-```
-void libera_fila(t_lista *lista) {
-  t_apontador P = lista->primeiro;
-  while (P != NULL) {
-    lista->primeiro = P->proximo;
-    free(P);
-    P = lista->primeiro;
-  }
-```
-**Alterar o conteúdo de uma posição**
-
-```
-void alterar(t_lista *lista, t_elemento e)
-{
-  t_apontador P = pesquisa_pos(lista, e.nome);
-  if (P->elemento.nome == NULL)
-    printf("Operacao Invalida: contatinho nao encontrado\n");
-  else
-    P->elemento.numero = e.numero;
-}
-```
-**Inverter a lista - O(n) em tempo e O(1) em espaço.**
-
-```
-void reverse(t_lista *lista)
-{
-	t_apontador P = lista->primeiro; 
-	if (lista->primeiro == NULL)
-		printf("Lista vazia\n");
-	if (lista->primeiro->proximo == NULL)
-	{
-		printf("Lista unitária\n");
-	}
+	- Apesar do nome “fila”, não é FIFO: o elemento acessado é sempre o de maior prioridade (que pode ser a maior ou menor chave de todas).
 	
-	t_apontador anterior = NULL;
-	t_apontador proximo = lista->primeiro;
-	while (proximo != NULL)
-	{
-		proximo = lista->primeiro->proximo;
-		lista->primeiro->proximo = anterior; // inverter o prox
-		anterior = lista->primeiro;			 // andar com o ant pra frente
-		lista->primeiro = proximo;
-	} 
-	lista->primeiro = anterior;
-} 
-```
-**Tamanho ou quantidade de nós da lista**
+- **Operações Principais**:
 
-```
-int tamanho (t_lista *lista) {
-	t_apontador p= lista->primeiro; 
-	int n=0;
-	while (p != NULL) {
-		n++;
-		p = p->proximo;
-}
-	return n;
-}
-```
-### Lista Duplamente Ligada (implementação dinâmica)
+	- **Insere(F,I)**: insere o elemento I = (chave, info) na fila de prioridade F;
+	- **Remove(F)**: remove (e retorna) o elemento com maior prioridade em F;
+	- **Próximo(F)**: retorna (sem remover) o elemento com maior prioridade em F;
+	- Pode ter outras operações: conta(F), vazia(F), alteraPrioridade(F,chave),etc.
 
-#### Ideia geral
-
-- Similar à lista padrão
-- Ponteiro para o anterior é adicionado na struct
-- Operações de busca, remoção e inserção análogas à lista padrão, atentando-se ao ponteiro para o anterior
-- Ponteiro para o fim pode ser conveniente
-
-- **desvantagens:**
-	- não suporta busca binária
-    - implementação mais difícil, pq gasta mais um ponteiro.Dica: ponteiro pro final.Dificuldade de remover o último e  primeiro, pq ambos apontam pra NULL
-	- Vantagem: busca pelo elemento que quer remover
-### Lista Circular (implementação estática)
-
-#### Ideia geral
-
-- Vetor normal
-- Ponteiros para início e fim são importantes
-- Como qualquer Lista Estática é importante manter a informação da quantidade de espaços alocados (MAX_TAM)
-- Como iterar 5 e 0(fazer a volta)? usando MOD(%). 
-- Busca sequencial basta iterar de inicio para fim.
-- Busca binária é preciso considerar que o início não é 0 e que é possivel estourar o vetor. PIVO = ((inicio+fim)/2)%(max_tam)
-- Na inserção, verificações de limites são importantes para evitar que dados sejam sobrescritos.
-- O dado é inserido no fim. → fim=(fim+1)%TAM
-- Ao remover um número fica inicio =(inicio+1)%TAM. 
-- Se o inicio e fim se encontrarem ela tá cheia, ai não tem como inserir.
-
-### Lista Circular (implementação dinâmica)
-
-#### Ideia geral
-
-- Similar à lista padrão
-- A diferença é que o próximo do último é o primeiro(ao invés de NULL)
-- ultimo->prox = primeiro.(simplesmente ligada) 
-- ultimo->prox = primeiro;
-  primeiro->ant = ultimo; (na duplamente ligada)
-
-## Aplicações de listas ligadas
-
-- Visualizador de imagens: As imagens Próximo e Anterior são ligadas, portanto, podem ser acessadas pelos botões “próximo” e “anterior”.
-- Página seguinte e anterior em um navegador da web: Podemos acessar o “url” anterior e seguinte pesquisado em um navegador da web pressionando os botões “voltar” e “próximo”, pois eles estão conectados como uma lista ligadas.(usa pilhas)
-- Music Player: As músicas no music player são conectadas à música anterior e seguinte. Você pode ouvir as músicas do início ou do final da lista.
-
-# Estrutura de dados
-
-## Estrutura de dados elementares
-
-### Pilhas e filas
-
-- conjuntos dinâmicos
-
-#### Pilhas
-
-- São especializações de listas em que as inserções e remoções são feitas na mesma extremidade, chamada TOPO
-- LIFO (Last In, First Out == o último elemento a entrar é o primeiro a sair)
-- A ordem da retirada dos elementos é inversa ao da entrada
-- O *TOPO* indica o último elemento inserido
-- Se *TOPO* == 0, a pilha está vazia
-- Se a pilha está vazia e mesmo assim é realizada a operação de retirada de elementos, ocorreu um *estouro negativo*
+- **Implementação**:
+	- Lista estática ordenada;
+	- Lista estática não-ordenada;
+	- Lista dinâmica ordenada;
+	- Lista dinâmica não-ordenada;
+	- Árvore balanceada;
 
 
-**Operações e nomenclaturas comuns em pilhas**
+# Heaps
 
-- INSERIR/EMPILHAR -> PUSH
-- REMOVER/DESEMPILHAR -> POP
-- STACK-EMPTY: verifica se a pilha está vazia (topo == -1)
-- Operações Complementares: cria uma pilha vazia,topo(retorna o item no topo da pilha),vazia(verifica se ta vazia),inverte,conta,imprime,etc. 
+## Conceito, Operações Principais e Implementação
 
-EMPILHAR
+- **Conceito**:
 
-```
-S.topo = S.topo + 1;
-S[S.topo] = x;
-```
-```
-int empilhar(t_pilha *pilha, t_elemento elemento)
-{
+	- Comumente traduzido como “pilha”, porém essa é uma péssima tradução para ED.Melhor seria algo como “amontoado”.
 
-	t_apontador novo;
-	novo = (t_apontador)malloc(sizeof(t_no));
-	if (novo == NULL)
-		return ERRO_CHEIA;
+	- A tendência é o maior fique no topo, não importa muito como estão os abaixo disso.
 
-	novo->elemento = elemento;
-	novo->proximo = pilha->topo;
-	pilha->topo = novo;
-	num_nos++;
-	return SUCESSO;
-}
-```
+	- Uma heap é uma AB que respeita as seguintes propriedades:
+		- **Ordem**: para cada nó v, exceto o nó raiz, temos que: chave(v) ≥ chave(pai(v)).
+		- **Completude**: uma AB é completa se (considerando altura h): 
+			- para i = 0, …, h-1 existem 2^i nós de profundidade i;
+			- na altura h, os nós existentes estão à esquerda dos ausentes (o último não precisa estar completo);
+	
+	- Uma heap armazenando n chaves possui altura h de ordem O(logn na base 2).
 
-DESEMPILHAR
+	- **Convenções de uma Heap**:
+		- Pode/deve haver um item com, ao menos, uma informação adicional à chave dentro de cada nó.
+		- O **último nó** é o mais à direita com profundidade h.
+	- **2^h = n - 1**: h = altura / n = número de chaves
 
-```
-if SACK-EMPTY(S)
-	error "underflow"
-else S.topo = S.topo - 1;
-	return S[S.topo + 1];
-```
-```
-int desempilhar(t_pilha *pilha)
-{
-	if (vazia(pilha))
-		return NAO_ENCONTROU;
+# Fila de prioridade com heap
 
-	t_apontador aux = pilha->topo; // topo=topo
-	pilha->topo = pilha->topo->proximo;
-	free(aux);
-	num_nos--;
+## Conceitos, Operações, Complexidade, Implementação e Aplicação
 
-	return SUCESSO; // geralmente retorna um nó que acabou de remover
-}
-```
-TOPO
+- **Conceitos**:
 
-```
-t_no topo(t_pilha *pilha)
-{
-	if (vazia(pilha))
-	{
-		printf("Nó vazio!\n");
-	}
+	- Armazenamos a chave em cada nó e mantemos o controle sobre a localização do último nó (w) e, possivelmente, a onde será a próxima inserção (z);
 
-	return *(pilha->topo);
-}
-```
+	-  O próximo item (maior prioridade) estará sempre na raiz:
+		- Maxheap vs. minheap: vamos focar no minheap por facilidade.
+	
+	- A remoção é sempre na raiz.
 
-VER SE ESTÁ VAZIA
+	- A inserção é logo depois do ultimo nó.
 
-```
-if S.topo == 0
-	return true;
-else return false;
-```
-```
-int vazia(t_pilha *pilha)
-{
-	if (pilha->topo == NULL)
-	{
-		return 1; // tá vazia
-	}
-	else
-		return 0; // não está vazia
-}
-```
-**Aplicações:**
+- **Operações**:
 
-- Undo e redo de editores de texto (similar à pags de navegação):  
-- Avaliar expressões matemáticas, verificar parênteses e chaves
-- Simular recursão
+## Remoção: 
+ 
+	- Primeiro, substituímos o conteúdo da raiz pelo conteúdo do último nó. Então removemos o último.
+	- Depois, trocamos a raiz com seu filho de menor valor,recursivamente (Bubble-down).
 
-**Notação Pós-fixa:**
+## Inserção:
+	- Primeiro, encontra a posição a inserir (z) e atribui o item a ela.
+	- Bubble-up: troca-se o item pelo seu pai até a raiz (ou até garantir a propriedade da heap).
+	 
+- **Complexidade (Heap)**:
 
-```
-para cada elemento E da expressão faça
-   Se E é operando / número
-		empilha(P,E)
-   Senão //operador
-		V1 = desempilha(P)
-		V2 = desempilha(P)
-		empilha(V2 operador V1)
-Se conta(P) > 1
-   INVALIDO
-Senão
-   Resultado = topo(P)
-```
-**Como tornar a infixa em pós-fixa?**
+	- A complexidade das operações **bubble-up (inserção)** e **bubble-down (remoção)** são diretamente relacionadas à altura da árvore, ou seja, **O(logn)**.
 
-```
-para cada elemento E da expressão faça
-	Se E é operando / número
-		Imprime E
-	Senão se E é ‘(‘
-		empilha(P, E)
-	Senão se E ')’
-		imprime(desempilha(P)) até que topo(P) seja ‘(‘
-	Senão // operador
-		enquanto precedência(E) <= precedência(topo(P))
-			imprime(desempilha(P))
-		empilha(P, E)
-enquanto não(vazia(P))
-	imprime(desempilha(P))
-```
+	- O próximo (retornar o elemento com maior prioridade em F) é O(1).
 
-#### Filas
+- **Implementação**:
 
-- Filas são especializações de listas em que as inserções e remoções são feitas em extremidades diferentes, chamadas frente e trás ou cabeça e cauda.
-- FIFO (First In, First Out == Primeiro a entrar, primeiro a sair)
-- Tem um **início (ou cabeça)** e um **fim (ou cauda)**
-- O elemento retirado da fila é sempre o que está **início**
-- (final-início) + 1 = indica quantos elementos há na fila
+	- Implementação estática (com arranjos): posições dos filhos: Esquerda: pos*2 e
+	 Direita: pos*2 + 1. Posição do pai: floor(pos/2).
 
+- **Aplicação**:
 
-**Operações e nomenclaturas comuns em filas**
-
-- INSERT/ENFILEIRAR -> ENQUEUE
-- DELETE/DESENFILEIRAR -> DEQUEUE 
-- Operações Complementares similar à pilha
-
-ENFILEIRAR(sempre no final)
-```
-Q[Q.fim] = x;
-if(Q.fim == Q.comprimento)
-	Q.fim = q;
-else Q.fim = Q.fim + 1;
-```
-```
-int enfileirar(t_fila *fila, t_elemento elemento)
-{
-
-	t_apontador novo;
-	novo = (t_apontador)malloc(sizeof(t_no));
-	if (novo == NULL)
-		return ERRO_CHEIA;
-
-	novo->elemento = elemento;
-	novo->proximo = NULL;
-	if (vazia(fila))
-	{
-		fila->primeiro = novo;
-	}
-	else
-	{
-		fila->ultimo->proximo = novo;
-	}
-	fila->ultimo = novo;
-	contador++;
-	return SUCESSO;
-}
-```
-
-DESENFILEIRAR(sempre no início)
-```
-x = Q[Q.inicio];
-if Q.inicio == Q.comprimento
-	Q.inicio = 1;
-else Q.inicio = Q.inicio + 1;
-return x;
-```
-```
-int desenfileirar(t_fila *fila)
-{
-	if (vazia(fila))
-		return NAO_ENCONTROU;
-	if (fila->primeiro == fila->ultimo)
-	{ // fila unitária
-		fila->ultimo = NULL;
-	}
-
-	t_apontador aux = fila->primeiro;
-	fila->primeiro = fila->primeiro->proximo;
-	free(aux);
-	contador--;
-	return SUCESSO; // geralmente retorna um nó que acabou de remover
-}
-
-
-
-
+	- Muito usada em algoritmos gulosos:
+		- Paradigma de resolução de problemas bastante comum;
+		- Aplicações em grafos: caminhos mínimos (Djikstra), AGM (Prim / Kruskal);
+		- Soluções aproximadas para problemas complexos;
+						
+	- Ordenação: 
+		- Usando uma heap, ordenamos n elementos em O(n logn);
+		- Insira os elementos na fila um a um via uma série de operações insere;
+		- Retorne os elementos via uma série de operações remove; 
 
 

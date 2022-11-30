@@ -30,6 +30,6 @@ int checar_fb(t_avl *avl);
 int inserir(t_avl *avl, t_elemento elemento);
 t_elemento pesquisar(t_avl *avl, t_chave chave);
 int remover(t_avl *avl, t_chave chave);
-// void imprimir(t_avl *avl);
+void imprimir(t_avl *avl);
 
 #endif

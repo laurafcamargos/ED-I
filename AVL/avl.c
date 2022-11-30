@@ -114,12 +114,10 @@ int inserir(t_avl *avl, t_elemento elemento) {
 
 		if (elemento.chave < (*avl)->elemento.chave) {
 			inserir(&(*avl)->esq, elemento);
-			(*avl)->altura = max((*avl)->altura,
-						retornar_altura(&(*avl)->esq) + 1);
+			(*avl)->altura = max((*avl)->altura,retornar_altura(&(*avl)->esq) + 1);
 		} else {
 			inserir(&(*avl)->dir, elemento);
-			(*avl)->altura = max((*avl)->altura,
-						retornar_altura(&(*avl)->dir) + 1);
+			(*avl)->altura = max((*avl)->altura,retornar_altura(&(*avl)->dir) + 1);
 		}
 
 	}
@@ -139,7 +137,7 @@ int inserir(t_avl *avl, t_elemento elemento) {
 		if (fb_filho >=0) {
 			rotacao_dir(avl);
 		} else {
-			rotacao_esq_dir(avl);
+			rotacao_esq_dir(avl);//rotação dupla 
 		}
 
 	} else if (fb < -1) { // dir
