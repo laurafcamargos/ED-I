@@ -1,6 +1,6 @@
 # Árvores Binárias
 
-## Intro, Nomenclaturas e Conceitos Gerais
+## Características, Conceitos Gerais e Tipos de Dados
 
 - **Características**:
 	- uma estrutura de dados que pode ser representada como uma hierarquia onde cada elemento é chamado de nó.
@@ -24,7 +24,7 @@
 	- **t_elemento**: struct que contém a chave de identificação e outros campos de informação.
 	- **t_ab**: é uma variável do tipo apontador, sempre que manipulado usar (*ab)->elemento = elemento, por exemplo.
 
-- Estrutura de uma AB:
+- **Estrutura de uma AB**:
 ```
 typedef int t_chave;
 typedef struct {
@@ -59,7 +59,6 @@ int criar(t_abb *abb) {
 	*abb = NULL;
 }
 ```
-
 - **Cria raiz**: 
 ```
 int static criar_raiz(t_abb *abb, t_elemento elemento){
@@ -74,7 +73,44 @@ int static criar_raiz(t_abb *abb, t_elemento elemento){
 	return SUCESSO;
 }
 ```
-- **Insere esquerda ou direita**:
+- Inserção, remoção e busca, etc.
+
+- **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
+- Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
+
+# Árvores Binárias de Busca(ABB)
+
+- **Características**: é uma estrutura que implementa a TS com as operações:
+	- **Busca**: encontrar se uma chave existe e retornar seu valor, caso exista.
+	- Encontrar o maior, o menor e/ou o k-ésimo elemento. 
+	- Inserção, remoção, alteração, etc.
+	- As chaves de uma ABB precisam ser comparáveis.
+
+- **Busca**: Para todos os nós da árvore, os nós na sub-árvore esquerda possuem chave menor ou igual que o nó raiz. Para a direita, chave maior. O processo é muito parecido com a busca binária em um vetor ordenado.
+```
+t_elemento pesquisar(t_abb *abb, t_chave chave) {
+
+	if ((*abb) == NULL) {
+		t_elemento e;
+		printf("elemento nao foi encontrado\n");
+		e.chave = -1;
+		return e;
+	}
+	if ((*abb)->elemento.chave == chave) {
+
+		printf("elemento encontrado\n"); 
+		return (*abb)->elemento;
+	} else {
+
+		if (chave < (*abb)->elemento.chave) {
+			return pesquisar(&(*abb)->esq, chave);
+		} else {
+			return pesquisar(&(*abb)->dir, chave);
+		}
+	}
+}
+```
+- **Inserção**: o processo é muito mais barato que a inserção em um vetor ordenado, pois não envolve movimentação de dados. 
 ```
 int inserir(t_abb *abb, t_elemento elemento) {
 	
@@ -96,26 +132,63 @@ int inserir(t_abb *abb, t_elemento elemento) {
 	}
 }
 ```
-
-- **Qual é a complexidade das operações de uma AB?**: a busca, inserção e remoção são O(n). 
-- Então, qual é a principal vantagem da AB em relação a, por exemplo, uma lista encadeada? Nenhuma.
-
-## Árvores Binárias de Busca(ABB)
-
-- **Características**: é uma estrutura que implementa a TS com as operações:
-	- **Busca**: encontrar se uma chave existe e retornar seu valor, caso exista.
-	- Encontrar o maior, o menor e/ou o k-ésimo elemento. 
-	- Inserção, remoção, alteração, etc.
-	- As chaves de uma ABB precisam ser comparáveis.
-
-- **Busca**: Para todos os nós da árvore, os nós na sub-árvore esquerda possuem chave menor ou igual que o nó raiz. Para a direita, chave maior. O processo é muito parecido com a busca binária em um vetor ordenado.
-
-- **Inserção**: o processo é muito mais barato que a inserção em um vetor ordenado, pois não envolve movimentação de dados. 
-
 - **Remoção**: o processo é mais complicado, pois existem 3 possíveis casos de remoção. São eles: 
 1- remoção do nó folha; 
 2- remoção de um nó que possui uma subárvore (ou direita ou esquerda);
 3- remoção de um nó que possui as duas subárvores. 
+```
+int remover(t_abb *abb, t_chave chave) {
+
+	// nao achou
+	if ((*abb) == NULL)
+		return NAO_ENCONTROU;
+
+	// busca: direita ou esquerda
+	if (chave > (*abb)->elemento.chave) {
+		return remover(&(*abb)->dir, chave);
+	} else if (chave < (*abb)->elemento.chave) {
+		return remover(&(*abb)->esq, chave);
+	}
+	t_apontador p;
+	//se passou, é porque achou a chave
+	if ((*abb)->esq == NULL && (*abb)->dir == NULL) { //caso 1 (nó folha)
+		p = *abb;
+		*abb = NULL;
+		free(p);
+	} else if ((*abb)->esq == NULL) { //caso 2 (remover da dir)
+		p = *abb;
+		*abb = (*abb)->dir;
+		free(p);
+	} else if ((*abb)->dir == NULL) { //caso 3 (remover da esq)
+		p = *abb;
+		*abb = (*abb)->esq;
+		free(p);
+		//caso 2 e 3 os nós possuem só 1 filho
+	} else { //caso 4 (remover nó que tem 2 filhos)
+		buscaMaiorEsqETroca(abb, &(*abb)->esq);
+	}
+	return SUCESSO;
+}
+```
+- **Função auxiliar que procura o maior elemento à esquerda e realiza a troca no caso 4 da remoção**:
+```
+static void buscaMaiorEsqETroca(t_abb *raiz, t_abb *subarv) {
+
+	if ((*subarv)->dir == NULL) {
+
+		t_apontador p;
+
+		(*raiz)->elemento = (*subarv)->elemento;
+
+		p = *subarv;
+		*subarv = (*subarv)->esq;
+		free(p);
+
+	} else {
+		buscaMaiorEsqETroca(raiz, &(*subarv)->dir);		
+	}
+}
+```
 
 - **Complexidade das operações**: no pior caso, todas as operações de uma ABB consomem tempo proporcional à altura da árvore - O(n). No melhor caso, a complexidade é O(log n).
 
@@ -171,7 +244,7 @@ garantias em relação ao balanceamento.
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
 -colocar imagem
 
-## Árvores AVL (ABB Balanceada)
+# Árvores AVL (ABB Balanceada)
 
 - O balanceamento pode ser entendido como sinônimo de equilibrado.
 
@@ -235,14 +308,14 @@ typedef t_apontador t_avl;
 ```
 
 
-## Operações Básicas na ABB
+## Operações Básicas na AVL
 
 - **Inserção nas “partes internas” ou “externas”**:
 	- Externa (subárvore direita do filho à direita ou subárvore esquerda do filho à esquerda): **simples**.
 	-  Interna (subárvore direita do filho à esquerda ousubárvore esquerda do filho à direita): **dupla**.
 - **Remoção**: lembrando que qualquer remoção pode diminuir a altura de uma subárvore (causar desbalanceamento). Portanto, devemos fazer o retrace da folha (que foi removida) até a raiz revendo o rebalanceamento. É possível que seja necessário fazer várias rotações até a raiz.
 
-
+# Filas de Prioridade e Heaps
 
 
 ```

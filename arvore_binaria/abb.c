@@ -80,7 +80,6 @@ static void buscaMaiorEsqETroca(t_abb *raiz, t_abb *subarv) {
 	} else {
 		buscaMaiorEsqETroca(raiz, &(*subarv)->dir);		
 	}
-
 }
 
 int remover(t_abb *abb, t_chave chave) {
