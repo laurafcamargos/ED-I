@@ -90,8 +90,8 @@ void visita (t_abb *abb){
 	printf("%d ",(*abb)->elemento.chave);
 }
 ```
-	- Um percurso gera uma sequência linear de nós visitados (agora existe o conceito de sucessor e predecessor de um nó). Logo, diferentes percursos podem ser realizados, dependendo da aplicação.
 
+- Um percurso gera uma sequência linear de nós visitados (agora existe o conceito de sucessor e predecessor de um nó). Logo, diferentes percursos podem ser realizados, dependendo da aplicação.
 - **3 percursos comuns para ABs podem ser feitos com o mesmo algoritmo base**: diferença básica está na ordem em que os nós são visitados. Percorre-se a AB recursivamente:
 	- Pré-ordem (pre-order): visita o nó ***antes** de acessar qualquer um dos seus filhos.
 					```
