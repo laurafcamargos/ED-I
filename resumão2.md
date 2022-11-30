@@ -136,11 +136,8 @@ garantias em relação ao balanceamento.
 
 - Um percurso gera uma sequência linear de nós visitados (agora existe o conceito de sucessor e predecessor de um nó). Logo, diferentes percursos podem ser realizados, dependendo da aplicação.
 - **3 percursos comuns para ABs podem ser feitos com o mesmo algoritmo base**: diferença básica está na ordem em que os nós são visitados. Percorre-se a AB recursivamente:
-	- Pré-ordem (pre-order): visita o nó **antes** de acessar qualquer um dos seus filhos.
-	- Em-ordem (in-order): visita o nó **entre** o acesso a cada um de seus dois filhos.
-	- Pós-ordem (post-order): visita o nó somente **depois** de acessar seus filhos.
 
-	- Pré-ordem:
+- Pré-ordem (pre-order): visita o nó **antes** de acessar qualquer um dos seus filhos:
 ```
 			void visita (t_abb *abb){ 
 				if((*abb) != NULL) {
@@ -150,8 +147,7 @@ garantias em relação ao balanceamento.
 				}
 			}	
 ```
-
-	- Em-ordem:
+- Em-ordem (in-order): visita o nó **entre** o acesso a cada um de seus dois filhos:
 ```
 			void visita (t_abb *abb){ 
 				if((*abb) != NULL) {
@@ -159,19 +155,19 @@ garantias em relação ao balanceamento.
 					printf("%d ",(*abb)->elemento.chave);
 					visita(&(*abb)->dir);
 				}
-			}
+			}	
 ```
-
-	- Pós-ordem:
+	- Pós-ordem (post-order): visita o nó somente **depois** de acessar seus filhos:
+```
 			void visita (t_abb *abb){ 
 				if((*abb) != NULL) {
 					visita(&(*abb)->esq);
 					visita(&(*abb)->dir);
 					printf("%d ",(*abb)->elemento.chave);
 				}
-			}
+			}	
 ```
-```
+
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
 -colocar imagem
 
