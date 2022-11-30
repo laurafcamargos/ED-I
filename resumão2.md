@@ -436,12 +436,12 @@ typedef t_apontador t_avl;
 
 - **Operações**:
 
-## Remoção: 
+- **Remoção**: 
  
 	- Primeiro, substituímos o conteúdo da raiz pelo conteúdo do último nó. Então removemos o último.
 	- Depois, trocamos a raiz com seu filho de menor valor,recursivamente (Bubble-down).
 
-## Inserção:
+-**Inserção**:
 	- Primeiro, encontra a posição a inserir (z) e atribui o item a ela.
 	- Bubble-up: troca-se o item pelo seu pai até a raiz (ou até garantir a propriedade da heap).
 	 
