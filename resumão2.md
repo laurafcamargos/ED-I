@@ -142,31 +142,34 @@ garantias em relação ao balanceamento.
 
 	- Pré-ordem:
 ```
-					void visita (t_abb *abb){ 
-						if((*abb) != NULL) {
-							printf("%d ",(*abb)->elemento.chave);
-							visita(&(*abb)->esq);
-							visita(&(*abb)->dir);
-}
+			void visita (t_abb *abb){ 
+				if((*abb) != NULL) {
+					printf("%d ",(*abb)->elemento.chave);
+					visita(&(*abb)->esq);
+					visita(&(*abb)->dir);
+				}
+			}	
 ```
 
 	- Em-ordem:
 ```
-					void visita (t_abb *abb){ 
-						if((*abb) != NULL) {
-							visita(&(*abb)->esq);
-							printf("%d ",(*abb)->elemento.chave);
-							visita(&(*abb)->dir);
-					}
+			void visita (t_abb *abb){ 
+				if((*abb) != NULL) {
+					visita(&(*abb)->esq);
+					printf("%d ",(*abb)->elemento.chave);
+					visita(&(*abb)->dir);
+				}
+			}
 ```
 
 	- Pós-ordem:
-					void visita (t_abb *abb){ 
-						if((*abb) != NULL) {
-							visita(&(*abb)->esq);
-							visita(&(*abb)->dir);
-							printf("%d ",(*abb)->elemento.chave);
-					}
+			void visita (t_abb *abb){ 
+				if((*abb) != NULL) {
+					visita(&(*abb)->esq);
+					visita(&(*abb)->dir);
+					printf("%d ",(*abb)->elemento.chave);
+				}
+			}
 ```
 ```
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
