@@ -17,7 +17,7 @@ typedef struct t_no *t_apontador;
 typedef struct t_no {
 	t_elemento elemento;
 	t_apontador esq, dir;
-	int alt; //novo
+	int altura; //novo
 } t_no;
 
 typedef t_apontador t_avl;

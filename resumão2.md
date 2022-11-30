@@ -24,6 +24,7 @@
 	- t_elemento: struct que contém a chave de identificação e outros campos de informação.
 	- t_ab: é uma variável do tipo apontador, sempre que manipulado usar (*ab)->elemento = elemento, por exemplo.
 
+- Estrutura de uma AB:
 ```
 typedef int t_chave;
 typedef struct {
@@ -127,41 +128,53 @@ garantias em relação ao balanceamento.
 ```
 ```
 - **Aplicações**: representar uma expressão em uma árvore binária. Ex: (A + B) * (C - D) -> A B + C D - * > notação pós-fixa mais fácil.
+-colocar imagem
 
-![Operaca](https://www.researchgate.net/profile/Leandro-De-Castro/publication/261437902/figure/fig1/AS:392536632905730@1470599434321/Figura-I-Arvore-de-programacao-genetica-representando-a-expressao-simbolica-AB.png)
+#### Árvores AVL (ABB Balanceada)
+
+- O balanceamento pode ser entendido como sinônimo de equilibrado.
+
+- O objetivo é manter as subárvores da esquerda e direita com a menor diferença possível.
+
+- Todo nó da árvore possui um **fator de balanceamento(fb)**.
+
+- O fb é a diferença entre a altura da subárvore da esquerda e da direita: **fb = hEsq - hDir**.
+	
+- O fb de qualquer nó é sempre -1,0,1.
+
+- A altura das subárvores de cada nó pode se diferenciar em, no máximo, 1. Caso contrário, fazemos rotações para a esquerda ou direita, a fim de rebalancear a árvore.
+
+- Estrutura de uma AVL:
+```
+typedef int t_chave;
+
+typedef struct {
+	t_chave chave;
+	char nome[50];
+} t_elemento;
+
+typedef struct t_no *t_apontador;
+typedef struct t_no {
+	t_elemento elemento;
+	t_apontador esq, dir;
+	int altura; //novo
+} t_no;
+
+typedef t_apontador t_avl;
+
+```
 
 ## Rotações:
 
-- **Rotação à direita**: 
+- **Rotação à direita**: a árvore vai estar "esticada para a esquerda" 
 
-- **Rotação à esquerda**: 
+- **Rotação à esquerda**: a árvore vai estar "esticada para a direita" 
 
 - **Rotação dupla à direita(ou esquerda-direita)**:
 
 - **Rotação dupla à esquerda(ou direita-esquerda)**:
 
 - Como eu sei quando e qual rotação eu devo fazer?
-
-#### Árvores AVL (ABB Balanceada)
-
-- O balanceamento pode ser entendido como sinônimo de equilibrado.
-- O objetivo é manter as subárvores da esquerda e direita com a menor diferença possível.
-- 
-
-
-typedef int t_chave;
-typedef int t_apontador;
-
-typedef struct {
-	t_chave chave;
-	//char nome[50];
-} t_elemento;
-
-typedef struct {
-	t_elemento elemento[MAXTAM];
-	t_apontador ultimo;
-} t_lista;
-```
 - **funções comuns:**
 	- inicializar a estrutura
 	- quantidade de elementos

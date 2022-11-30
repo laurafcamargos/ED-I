@@ -20,9 +20,9 @@ static void rotacao_esq(t_avl *avl) {
 	// aux passa a ser a raiz
 	j = (*avl);
 
-	(*avl)->alt = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
+	(*avl)->altura = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
 
-	j->alt = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
+	j->altura = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
 
 	// mudar o ponteiro "de cima"
 	*avl = j;
@@ -43,9 +43,9 @@ static void rotacao_dir(t_avl *avl) {
 	// aux passa a ser a raiz
 	j = (*avl);
 
-	(*avl)->alt = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
+	(*avl)->altura = max(retornar_altura(&(*avl)->esq),retornar_altura(&(*avl)->dir)) + 1;
 
-	j->alt = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
+	j->altura = max(retornar_altura(&j->esq),retornar_altura(&j->dir)) + 1;
 
 	// mudar o ponteiro "de cima"
 	*avl = j;
@@ -81,7 +81,7 @@ int static criar_raiz(t_avl *avl, t_elemento elemento){
 	(*avl)->esq = NULL;
 	(*avl)->dir = NULL;
 	(*avl)->elemento = elemento;
-	(*avl)->alt = 0;
+	(*avl)->altura = 0;
 
 	return SUCESSO;
 
@@ -91,7 +91,7 @@ int retornar_altura(t_avl *avl) {
     if ((*avl) == NULL)
         return -1;
     else
-        return (*avl)->alt;
+        return (*avl)->altura;
 }
 
 int checar_fb(t_avl *avl) {
@@ -114,19 +114,19 @@ int inserir(t_avl *avl, t_elemento elemento) {
 
 		if (elemento.chave < (*avl)->elemento.chave) {
 			inserir(&(*avl)->esq, elemento);
-			(*avl)->alt = max((*avl)->alt,
+			(*avl)->altura = max((*avl)->altura,
 						retornar_altura(&(*avl)->esq) + 1);
 		} else {
 			inserir(&(*avl)->dir, elemento);
-			(*avl)->alt = max((*avl)->alt,
+			(*avl)->altura = max((*avl)->altura,
 						retornar_altura(&(*avl)->dir) + 1);
 		}
 
 	}
 
 	// //opcao/variacao
-	// (*avl)->alt = max(retornar_altura(&(*avl)->esq),
-	// 					retornar_altura(&(*avl)->dir)) + 1;
+	// (*avl)->altura = max(retornar_alturaura(&(*avl)->esq),
+	// 					retornar_alturaura(&(*avl)->dir)) + 1;
     
 	int fb = checar_fb(avl);
 	//printf("%d - fb %d\n", elemento.chave, fb);
