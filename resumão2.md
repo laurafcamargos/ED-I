@@ -196,7 +196,8 @@ garantias em relação ao balanceamento.
 
 - **Rotação dupla à esquerda(ou direita-esquerda)**:
 
--**Situações podem causar desbalanceamento**: 
+- **Situações podem causar desbalanceamento**: 
+
 	- Nó inserido em descendente esquerdo de nó com Fb = 1.
 	- Nó inserido em descendente direito de nó com Fb = -1.
 
