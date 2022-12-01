@@ -587,11 +587,15 @@ equação do segundo grau. Resolve o problema de aglutinação, porém apresenta
 
 ### Endereçamento Fechado:
 
-	- Não procura por posições vagas (valor NULL) dentro do array que define a tabela hash.
-	- Armazena dentro de cada posição do array o início de uma nova ED (lista encadeada, array, árvore binária,etc).
-	- Dentro dessa nova ED serão armazenadas as colisões(elementos com chaves iguais) para aquela posição do array.
-	- Funciona bem, mas da problema na remoção (colocar flag -1). 
-	- Uma implementação interessante de fazer é dar O(1) para a chave mais popular (informação que procurou por último).
+- Não procura por posições vagas (valor NULL) dentro do array que define a tabela hash.
+
+- Armazena dentro de cada posição do array o início de uma nova ED (lista encadeada, array, árvore binária,etc).
+
+- Dentro dessa nova ED serão armazenadas as colisões(elementos com chaves iguais) para aquela posição do array.
+
+- Funciona bem, mas da problema na remoção (colocar flag -1). 
+	
+- Uma implementação interessante de fazer é dar O(1) para a chave mais popular (informação que procurou por último).
 
 - No caso de usar uma lista dinâmica não ordenada como ED auxiliar:
 
