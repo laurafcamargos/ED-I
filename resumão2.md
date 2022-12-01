@@ -474,8 +474,8 @@ typedef t_apontador t_avl;
 
 ## Motivação
 
-	- Precisamos do tempo de acesso do array juntamente com a capacidade de busca um elemento em tempo constante O(1).
-	- Solução: usar uma tabela hash!
+- Precisamos do tempo de acesso do array juntamente com a capacidade de busca um elemento em tempo constante O(1).
+- Solução: usar uma tabela hash!
 
 ## Conceitos
 
@@ -485,11 +485,19 @@ typedef t_apontador t_avl;
 	- alpha = N/M :  fator de carga (load factor);
 
 - **Função Hashing**: 
-	- Transforma cada chave em um índice da tabela de hash.Tenta fazer com que a complexidade de busca seja O(1). 
-	- A função de hashing responde a pergunta "Em qual posição da tabela de hash devo colocar esta chave?".A função de hashing espalha as chaves pela tabela de hash.
-	- A função de hashing produz uma colisão quando duas chaves diferentes têm o mesmo valor hash e portanto são levadas na mesma posição da tabela de hash.
 
-- **Função de Hashing Modular**: 
+	- Transforma cada chave em um índice da tabela de hash.Tenta fazer com que a complexidade de busca seja O(1). 
+
+	- A função de hashing responde a pergunta "Em qual posição da tabela de hash devo colocar esta chave?". A função de hashing espalha as chaves pela tabela de hash.
+
+	- A função de hashing produz uma **colisão** quando duas chaves diferentes têm o mesmo valor hash e portanto são levadas na mesma posição da tabela de hash.
+
+ 	- Na inserção e busca é necessário calcular a posição dos dados dentro da tabela. 
+	
+	- Sua implementação depende do conhecimento prévio da natureza e domínio da chave a ser utilizada.
+
+
+- **Função de Hashing Modular (comumente usada)**: 
 	- Se as chaves são inteiros positivos, podemos usar a função modular (resto da divisão por M).	
 	- Em hashing modular, é bom que M seja primo (reduz o número de colisões).
 	
@@ -500,11 +508,21 @@ typedef t_apontador t_avl;
 ```
 - **Tabela Hashing**: 
 	
+	- A criação de uma tabela hash consiste de duas coisas: **uma função hashing e um tratamento de colisões**.
+
 	- Tabela que pega todos os índices (capacidade) e as informações de cada um desses índices. É uma generalização da idéia de array. 
-	- Utiliza a função de hashing para espalhar os elementos que queremos armazenar na tabela. 
+
+	- Utiliza a função de hashing para espalhar os elementos que queremos armazenar na tabela.
+
 	- Esse espalhamento faz com que os elementos fiquem dispersos de forma não ordenada dentro do array que define a tabela.
+
 	- A tabela permite a associar valores a chaves (chave: parte da informação que compõe o elemento a ser inserido ou buscado na tabela / valor: é a posição (índice) onde o elemento se encontra no array que define a tabela).
+
 	- A partir de uma chave podemos acessar em O(1) uma determinada posição do array.
+
+	- Como escolher a melhor  capacidade da tabela hashing?  
+		- A capacidade tem a ver com a quantidade de colisões.O caso de nunca ter colisão é pegar a capacidade = total de informações que você tem (inviável as vezes, pois gasta muito espaço).
+		- O ideal é escolher um número primo e evitar valores que sejam uma potência de dois.
 
 ## Vantagens
 
@@ -516,4 +534,70 @@ typedef t_apontador t_avl;
 
 	- Alto custo para recuperar os elementos da tabela ordenados pela chave (nesse caso teria que ordenar). 
 	- O pior caso é O(N), sendo N o tamanho da tabela (alto número de colisões).
-	- 
+
+## Hashing Perfeito
+
+	- Nunca ocorre colisão (chaves diferentes irão sempre produzir posições diferentes).
+	- No pior caso, as operações de busca e inserção são sempre executadas em tempo constante, O(1). 
+
+## Tratamento de Colisões (endereçamento aberto e fechado)
+
+	- Uma escolha adequada da função de hashing ou do tamanho da tabela hash pode minimizar as colisões.
+
+**Endereçamento Aberto**: 
+- No caso de um colisão, percorrer a tabela hash
+buscando por uma posição ainda não ocupada, onde es elementos são armazenados na própria
+tabela hash.
+
+- Para a realização do cálculo da nova posição
+após a colisão, existem três estratégias(sondagens, probes,rehash) muito utilizadas no endereçamento aberto: 
+
+	- Sondagem linear: Tenta espalhar os elementos de forma sequencial a partir da posição calculada utilizando a função de hashing. A medida que a tabela hash fica cheia, o tempo para incluir ou buscar um elemento aumenta, pois surgem longas sequências de posições ocupadas.
+	- Tendência de gerar clusters(aglutinações), o que da uma busca O(n) no pior caso.
+```
+		h(x,i) = (x+i) % m; //x = chave /// i = tentativa
+```
+
+	- Sondagem quadrática: Tenta espalhar os elementos utilizando uma
+equação do segundo grau. Resolve o problema de aglutinação, porém apresenta outro problema de que todas as chaves que produzam a mesma posição inicial também produzem as mesmas posições na sondagem quadrática (replica as mesmas colisões). 
+	- Tendência de criar "buracos" dentro dos blocos.
+```
+				h(x,i) = (x+i*i) % m; 
+						ou 
+ 		h(x,i) = (x +c1* i+c2 * i*i) % m; 
+```
+
+	- Sondagem dupla: Tenta espalhar os elementos utilizando duas funções de hashing. É necessário que as duas funções de hashing sejam diferentes. A segunda função de hashing não pode resultar em um valor igual a 0.
+
+	- A primeira função de hashing (h) é utilizada para calcular a posição inicial do elemento.
+	- A segunda função de hashing (h2) é utilizada para calcular os deslocamentos em relação a posição inicial (no caso de uma colisão).
+	- O esperado são n/m colisões.
+
+```
+		h(x,i) = (x + i*h2(x)) % m; 
+		h2(x) = x % P +1 ( P < m); // P e m primos entre si!
+```
+
+- **Vantagens do end. aberto**: 
+	- Garante um maior número de posições na tabela para a mesma quantidade de memória usada no endereçamento fechado.	
+	- A memória utilizada para armazenar os ponteiros da lista encadeada,por exemplo, no endereçamento fechado pode ser aqui usada para aumentar o tamanho da tabela, diminuindo o número de colisões.
+	- Busca é realizada dentro da própria tabela (encontra mais rápido).
+	- Ao invés de acessarmos ponteiros extras, calculamos a sequência de posições a serem armazenadas.
+
+- **Desvantagens do end. aberto**: 
+	- Maior esforço de processamento no cálculo das posições.
+	- Esse esforço maior se deve ao fato de que, quando uma colisão ocorre, devemos calcular uma nova posição da tabela (existe o risco de colisões sucessivas).
+
+**Endereçamento Fechado**:
+	- Não procura por posições vagas (valor NULL) dentro do array que define a tabela hash.
+	- Armazena dentro de cada posição do array o início de uma nova ED (lista encadeada, array, árvore binária,etc).
+	- Dentro dessa nova ED serão armazenadas as colisões(elementos com chaves iguais) para aquela posição do array.
+	- Funciona bem, mas da problema na remoção (colocar flag -1). 
+	- Uma implementação interessante de fazer é dar O(1) para a chave mais popular (informação que procurou por último).
+
+## TAD Tabela Hash
+
+- **Inserção**: calcular a posição da chave no array, recalcular a posição enquanto houver colisão (limitar o número de tentativas), alocar espaço para os dados e armazenar os dados na posição calculada.
+
+- **Busca**: calcular a posição da chave no array, verificar se há dados na posição calculada e se esses dados combinam com a chave, recalcular a posição enquanto os dados forem diferentes da chave e retornar os dados. 
+	
