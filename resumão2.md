@@ -470,3 +470,50 @@ typedef t_apontador t_avl;
 		- Retorne os elementos via uma série de operações remove; 
 
 
+# Hashing
+
+## Motivação
+
+	- Precisamos do tempo de acesso do array juntamente com a capacidade de busca um elemento em tempo constante O(1).
+	- Solução: usar uma tabela hash!
+
+## Conceitos
+
+- **Parâmetros Importantes**:
+	- M :  número de posições na tabela de hash;
+	- N :  número de chaves da tabela de símbolos;
+	- alpha = N/M :  fator de carga (load factor);
+
+- **Função Hashing**: 
+	- Transforma cada chave em um índice da tabela de hash.Tenta fazer com que a complexidade de busca seja O(1). 
+	- A função de hashing responde a pergunta "Em qual posição da tabela de hash devo colocar esta chave?".A função de hashing espalha as chaves pela tabela de hash.
+	- A função de hashing produz uma colisão quando duas chaves diferentes têm o mesmo valor hash e portanto são levadas na mesma posição da tabela de hash.
+
+- **Função de Hashing Modular**: 
+	- Se as chaves são inteiros positivos, podemos usar a função modular (resto da divisão por M).	
+	- Em hashing modular, é bom que M seja primo (reduz o número de colisões).
+	
+```
+		private int hash(int key) {
+    		return key % M;
+		}
+```
+- **Tabela Hashing**: 
+	
+	- Tabela que pega todos os índices (capacidade) e as informações de cada um desses índices. É uma generalização da idéia de array. 
+	- Utiliza a função de hashing para espalhar os elementos que queremos armazenar na tabela. 
+	- Esse espalhamento faz com que os elementos fiquem dispersos de forma não ordenada dentro do array que define a tabela.
+	- A tabela permite a associar valores a chaves (chave: parte da informação que compõe o elemento a ser inserido ou buscado na tabela / valor: é a posição (índice) onde o elemento se encontra no array que define a tabela).
+	- A partir de uma chave podemos acessar em O(1) uma determinada posição do array.
+
+## Vantagens
+
+	- Alta eficiência na operação de busca (caso médio é O(1) enquanto o da busca linear é O(N) e a da busca binária é O(log2 N)).
+	- Tempo de busca é praticamente independente do número de chaves armazenadas na tabela.
+	- Implementação simples.
+
+##	Desvantagens 
+
+	- Alto custo para recuperar os elementos da tabela ordenados pela chave (nesse caso teria que ordenar). 
+	- O pior caso é O(N), sendo N o tamanho da tabela (alto número de colisões).
+	- 
