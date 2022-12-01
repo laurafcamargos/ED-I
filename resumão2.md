@@ -599,12 +599,12 @@ equação do segundo grau. Resolve o problema de aglutinação, porém apresenta
 
 - No caso de usar uma lista dinâmica não ordenada como ED auxiliar:
 
-- **Vantagens**:
-	- Inserção tem complexidade O(1) no pior caso: basta inserir o elemento no início da lista.
+	- **Vantagens**:
+		- Inserção tem complexidade O(1) no pior caso: basta inserir o elemento no início da lista.
 
-- **Desvantagens**: 
-	- Busca tem complexidade O(M) no pior caso: busca linear.
-	- Quantidade de memória consumida: gastamos mais memória para manter os ponteiros que ligam os diferentes elementos dentro de cada lista
+	- **Desvantagens**: 
+		- Busca tem complexidade O(M) no pior caso: busca linear.
+		- Quantidade de memória consumida: gastamos mais memória para manter os ponteiros que ligam os diferentes elementos dentro de cada lista
 
 ## TAD Tabela Hash
 
