@@ -615,7 +615,7 @@ equação do segundo grau. Resolve o problema de aglutinação, porém apresenta
 
 ## Implementação de códigos
 
--**Função que retorna a altura de uma árvore binária (2 jeitos)**:
+- **Função que retorna a altura de uma árvore binária (2 jeitos)**:
 
 ```
 	int altura(t_abb *abb){
@@ -640,7 +640,7 @@ equação do segundo grau. Resolve o problema de aglutinação, porém apresenta
         return (*avl)->altura;
 }
 ```
--**Função de inserção na AVL (única diferente da ABB)**:
+- **Função de inserção na AVL (única diferente da ABB)**:
 
 ```
 int inserir(t_avl *avl, t_elemento elemento) {
@@ -690,7 +690,7 @@ int inserir(t_avl *avl, t_elemento elemento) {
     return SUCESSO;
 }
 ```
--**Função que verifica o fator de balanceamento da AVL**:
+- **Função que verifica o fator de balanceamento da AVL**:
 
 ```
 int checar_fb(t_avl *avl) {
@@ -701,7 +701,7 @@ int checar_fb(t_avl *avl) {
 }
 ```
 
--**Função que compara e retorna o maior dos números**: 
+- **Função que compara e retorna o maior dos números**: 
 
 ```
 static int max(int a, int b) {
