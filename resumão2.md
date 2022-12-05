@@ -612,4 +612,99 @@ equação do segundo grau. Resolve o problema de aglutinação, porém apresenta
 
 - **Busca**: calcular a posição da chave no array, verificar se há dados na posição calculada e se esses dados combinam com a chave, recalcular a posição enquanto os dados forem diferentes da chave e retornar os dados. 
 
+
+## Implementação de códigos
+
+-**Função que retorna a altura de uma árvore binária (2 jeitos)**:
+
+```
+	int altura(t_abb *abb){
+    	if((*abb) == NULL){
+        	return NAO_ENCONTROU;
+    }
+    else{
+        int esq = altura(&(*abb)->esq);
+        int dir = altura(&(*abb)->dir);
+        if(esq > dir)
+            return esq + 1;
+        else
+            return dir + 1;
+    }
+}
+```
+```
+	int retornar_altura(t_avl *avl) {
+    	if ((*avl) == NULL)
+        	return -1;
+    else
+        return (*avl)->altura;
+}
+```
+-**Função de inserção na AVL (única diferente da ABB)**:
+
+```
+int inserir(t_avl *avl, t_elemento elemento) {
 	
+	if ((*avl)==NULL) {
+		return criar_raiz(avl, elemento);
+	}
+
+	//considerar chaves primárias
+	if ((*avl)->elemento.chave == elemento.chave) { 
+		return JA_EXISTE;
+	} else {
+
+		if (elemento.chave < (*avl)->elemento.chave) {
+			inserir(&(*avl)->esq, elemento);
+			(*avl)->altura = max((*avl)->altura,retornar_altura(&(*avl)->esq) + 1);
+		} else {
+			inserir(&(*avl)->dir, elemento);
+			(*avl)->altura = max((*avl)->altura,retornar_altura(&(*avl)->dir) + 1);
+		}
+
+	}  
+	int fb = checar_fb(avl);
+	printf("%d - fb %d\n", elemento.chave, fb);
+
+	if (fb > 1) { // esq
+		// 2 casos
+		int fb_filho = checar_fb(&(*avl)->esq);
+
+		if (fb_filho >=0) {
+			rotacao_dir(avl);
+		} else {
+			rotacao_esq_dir(avl);//rotação dupla 
+		}
+
+	} else if (fb < -1) { // dir
+
+		int fb_filho = checar_fb(&(*avl)->dir);
+
+		if (fb_filho <= 0) {
+			rotacao_esq(avl);
+		} else {
+			rotacao_dir_esq(avl);
+		}
+
+	}
+    return SUCESSO;
+}
+```
+-**Função que verifica o fator de balanceamento da AVL**:
+
+```
+int checar_fb(t_avl *avl) {
+    if ((*avl) == NULL)
+        return 0;
+    else 
+        return retornar_altura(&(*avl)->esq) - retornar_altura(&(*avl)->dir);
+}
+```
+
+-**Função que compara e retorna o maior dos números**: 
+
+```
+static int max(int a, int b) {
+	return a > b ? a : b; 
+}
+```

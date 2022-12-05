@@ -120,17 +120,11 @@ int inserir(t_avl *avl, t_elemento elemento) {
 			(*avl)->altura = max((*avl)->altura,retornar_altura(&(*avl)->dir) + 1);
 		}
 
-	}
-
-	// //opcao/variacao
-	// (*avl)->altura = max(retornar_alturaura(&(*avl)->esq),
-	// 					retornar_alturaura(&(*avl)->dir)) + 1;
-    
+	}  
 	int fb = checar_fb(avl);
-	//printf("%d - fb %d\n", elemento.chave, fb);
+	printf("%d - fb %d\n", elemento.chave, fb);
 
 	if (fb > 1) { // esq
-
 		// 2 casos
 		int fb_filho = checar_fb(&(*avl)->esq);
 
@@ -151,9 +145,7 @@ int inserir(t_avl *avl, t_elemento elemento) {
 		}
 
 	}
-
     return SUCESSO;
-
 }
 
 
@@ -161,14 +153,14 @@ t_elemento pesquisar(t_avl *avl, t_chave chave) {
 
 	if ((*avl)==NULL) {
 		t_elemento e;
-		printf("NOPE\n");
+		printf("nao achou\n");
 		e.chave = NAO_ENCONTROU;
 		return e;
 	}
 
 	if ((*avl)->elemento.chave == chave) {
 
-		printf("YEP\n"); 
+		printf("achou\n"); 
 		return (*avl)->elemento;
 	} else {
 
@@ -235,4 +227,13 @@ int remover(t_avl *avl, t_chave chave) {
 
 	return SUCESSO;
 
+}
+
+void imprime (t_avl *avl){ //imprime em ordem
+	
+	if((*avl) != NULL) {
+		imprime(&(*avl)->esq);
+		printf("%d ",(*avl)->elemento.chave);
+		imprime(&(*avl)->dir);
+	}
 }

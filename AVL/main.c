@@ -5,7 +5,7 @@ int main() {
     t_avl raiz;
     t_elemento e;
 	t_apontador p;
-
+    
     criar(&raiz);
 
     e.chave = 5;
@@ -31,7 +31,6 @@ int main() {
     inserir(&raiz, e);
     e.chave = 14;
     inserir(&raiz, e);
-    
 
     pesquisar(&raiz, 10);    
     pesquisar(&raiz, 9);
@@ -39,7 +38,7 @@ int main() {
     pesquisar(&raiz, 10);
     pesquisar(&raiz, 9);
 
- //	imprimir(&l);
+ 	imprime(&raiz);
 	
 	return 0;
 }
