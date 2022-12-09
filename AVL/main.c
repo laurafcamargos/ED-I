@@ -32,12 +32,16 @@ int main() {
     e.chave = 14;
     inserir(&raiz, e);
 
-    pesquisar(&raiz, 10);    
-    pesquisar(&raiz, 9);
+    e= pesquisar(&raiz, 10);    
+    int i = e.chave;
+    printf("%d\n",i);
+    e=pesquisar(&raiz, 9);
+    printf("%d\n",i);
     remover(&raiz, 10);
-    pesquisar(&raiz, 10);
-    pesquisar(&raiz, 9);
-
+    e= pesquisar(&raiz, 10);
+    printf("%d\n",i);
+    e=pesquisar(&raiz, 9);
+    printf("%d\n",i);
  	imprime(&raiz);
 	
 	return 0;
